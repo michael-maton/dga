@@ -1,27 +1,29 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Dimensions } from "react-native";
 import Constants from "../../Constants";
-import OptionList from "./OptionList";
+import Option from "./Option";
 
-export default class Spinner extends Component {
+export default class OptionList extends Component {
   constructor(props) {
     super(props);
-    this.data = this.props.spinnerData;
+    this.options = this.props.data;
   }
 
   render() {
     return (
-        <View style={styles.reel}>
-            <OptionList options={this.data}/>
+      <View style={styles.optionList}>
+            {this.props.options.map((el, idx) => {
+              return <Option optionObject={el} key={idx}/>
+            })}
         </View>
     );
   }
 }
 const styles = StyleSheet.create({
-  reel: {
-    width: Constants.MAX_WIDTH / 1.75,
+  optionList: {
+    width: Constants.MAX_WIDTH / 2,
     height: Constants.MAX_HEIGHT / 7,
-    backgroundColor: "#C4BE6B",
+    backgroundColor: "red",
     alignItems: "center",
     borderRadius: 10,
 

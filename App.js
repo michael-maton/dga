@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import Spinner from "./app/components/Spinner";
 import Constants from "./Constants";
+import optionsData from "./app/assets/optionData";
 
 export default function App() {
   return (
@@ -16,10 +17,14 @@ export default function App() {
         <Text style={styles.headerText}>Select your shot</Text>
       </View>
       <View style={styles.spinnerContainer}>
-        <Spinner />
-        <Spinner />
+        <Spinner spinnerData={optionsData.discType}/>
+        <Spinner spinnerData={optionsData.shotType}/>
       </View>
-      <TouchableOpacity style={styles.spinButton} onPress={() => {}}>
+      <TouchableOpacity
+        style={styles.spinButton}
+        activeOpacity="0.5"
+        onPress={() => {}}
+      >
         <Text style={styles.button}> Spin </Text>
       </TouchableOpacity>
     </SafeAreaView>
