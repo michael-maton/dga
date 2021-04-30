@@ -16,7 +16,7 @@ export default class Spinner extends Component {
 
   spin = () => {
     //   console.log(this.optionSet)
-    this.optionSet.scrollByOffset(6);
+    this.optionSet.scrollByOffset(25);
   };
 
   render() {

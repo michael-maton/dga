@@ -13,7 +13,7 @@ import optionsData from "./app/assets/optionData";
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.spinnerSet = null;
+    this.spinnerSet = [];
   }
 
   render() {
@@ -23,13 +23,13 @@ export default class App extends Component {
           <Text style={styles.headerText}>Select your shot</Text>
         </View>
         <View style={styles.spinnerContainer}>
-          <Spinner spinnerData={optionsData.discType} ref={(ref) => { this.spinnerSet = ref; }}/>
-          <Spinner spinnerData={optionsData.shotType} ref={(ref) => { this.spinnerSet = ref; }}/>
+          <Spinner spinnerData={optionsData.discType} ref={(ref) => { this.spinnerSet[0] = ref; }}/>
+          <Spinner spinnerData={optionsData.shotType} ref={(ref) => { this.spinnerSet[1] = ref; }}/>
         </View>
         <TouchableOpacity
           style={styles.spinButton}
           activeOpacity="0.5"
-          onPress={() => { this.spinnerSet.spin() }}
+          onPress={() => { this.spinnerSet[0].spin(); this.spinnerSet[1].spin(); }}
         >
           <Text style={styles.button}> Spin </Text>
         </TouchableOpacity>

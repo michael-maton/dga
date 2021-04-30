@@ -14,7 +14,7 @@ export default class Option extends Component {
   }
 
   getColorScheme = () => {
-    let colorID = this.props.optionObject.id;
+    let colorID = this.props.optionObject.shot_id;
     if (colorID === 1) {
       this.state.color = "beige";
       this.state.backgroundColor = "gray";
@@ -36,6 +36,9 @@ export default class Option extends Component {
     } else if (colorID === 7) {
       this.state.color = "purple";
       this.state.backgroundColor = "yellow";
+    } else if (colorID === 8) {
+      this.state.color = "magenta";
+      this.state.backgroundColor = "dodgerblue";
     }
   };
 
@@ -56,7 +59,7 @@ export default class Option extends Component {
         <Text
           style={{
             color: this.state.color,
-            fontSize: 20
+            fontSize: 20,
           }}
         >
           {this.props.optionObject.option}
