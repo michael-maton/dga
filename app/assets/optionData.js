@@ -1,62 +1,70 @@
 const optionData = {
     discType: [
         {
-            id: 1,
+            shot_id: 1,
             option: "Overstable",
         },
         {
-            id: 2,
+            shot_id: 2,
             option: "Understable",
         },
         {
-            id: 3,
+            shot_id: 3,
             option: "Putter",
         },
         {
-            id: 4,
+            shot_id: 4,
             option: "Mid-range",
         },
         {
-            id: 5,
+            shot_id: 5,
             option: "Fairway Driver",
         },
         {
-            id: 6,
+            shot_id: 6,
             option: "Distance Driver",
         },
         {
-            id: 7,
+            shot_id: 7,
             option: "Opponents Choice",
+        },
+        {
+            shot_id: 8,
+            option: "Wild",
         },
     ],
     shotType: [
         {
-            id: 1,
+            shot_id: 1,
             option: "Forehand",
         },
         {
-            id: 2,
+            shot_id: 2,
             option: "Backhand",
         },
         {
-            id: 3,
+            shot_id: 3,
             option: "Roller",
         },
         {
-            id: 4,
+            shot_id: 4,
             option: "Hyzer",
         },
         {
-            id: 5,
+            shot_id: 5,
             option: "Anhyzer",
         },
         {
-            id: 6,
-            option: "Opposite Hand",
+            shot_id: 6,
+            option: "Overhand",
         },
         {
-            id: 7,
+            shot_id: 7,
             option: "Opponents Choice",
+        },
+        {
+            shot_id: 8,
+            option: "Opposite Hand",
         },
     ],
 
