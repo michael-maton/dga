@@ -10,27 +10,32 @@ export default class OptionList extends Component {
     this.scrollPattern = Constants.PATTERN.repeat(Constants.REPEAT).split("");
     this.fullReel = [];
     this.position = Constants.PATTERN.length * Constants.REPEAT - 1;
-    this.currentScrollPos = this.position * this.props.height * -1;
+    this.currentScrollPos =
+      (Constants.PATTERN.length - 1) * this.props.height * -1;
     this.state = {
       scrollPos: new Animated.Value(this.currentScrollPos),
     };
   }
 
   scrollByOffset = (offset) => {
-    if (
-      this.currentScrollPos >
-      Constants.PATTERN.length * Constants.REPEAT - (20 * this.props.height)
-    ) {
-      this.currentScrollPos = this.position * this.props.height * -1;
-    } else {
-      this.currentScrollPos =
-        this.currentScrollPos + this.props.height * offset;
-    }
+    // if (
+    //   this.currentScrollPos >
+    //   Constants.PATTERN.length * Constants.REPEAT - (20 * this.props.height)
+    // ) {
+    //   this.currentScrollPos = this.position * this.props.height * -1;
+    // } else {
+    // }
+    this.currentScrollPos = this.currentScrollPos + this.props.height * offset;
+    this.position = this.position - offset;
     Animated.timing(this.state.scrollPos, {
       toValue: this.currentScrollPos,
       duration: 1000,
       useNativeDriver: true,
-    }).start(() => {});
+    }).start(() => {
+      this.position = (Constants.REPEAT - (Constants.REPEAT - 1)) * Constants.PATTERN.length + (this.position % Constants.PATTERN.length);
+      this.currentScrollPos = this.position * this.props.height * -1;
+      this.state.scrollPos.setValue(this.currentScrollPos);
+    });
   };
 
   createReel = () => {
