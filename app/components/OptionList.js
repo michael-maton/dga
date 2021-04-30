@@ -17,8 +17,15 @@ export default class OptionList extends Component {
   }
 
   scrollByOffset = (offset) => {
-    this.currentScrollPos =
-      this.currentScrollPos + (this.props.height * offset);
+    if (
+      this.currentScrollPos >
+      Constants.PATTERN.length * Constants.REPEAT - (20 * this.props.height)
+    ) {
+      this.currentScrollPos = this.position * this.props.height * -1;
+    } else {
+      this.currentScrollPos =
+        this.currentScrollPos + this.props.height * offset;
+    }
     Animated.timing(this.state.scrollPos, {
       toValue: this.currentScrollPos,
       duration: 1000,
