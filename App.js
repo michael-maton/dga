@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,25 +10,32 @@ import Spinner from "./app/components/Spinner";
 import Constants from "./Constants";
 import optionsData from "./app/assets/optionData";
 
-export default function App() {
-  return (
-    <SafeAreaView style={styles.appContainer}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>Select your shot</Text>
-      </View>
-      <View style={styles.spinnerContainer}>
-        <Spinner spinnerData={optionsData.discType}/>
-        <Spinner spinnerData={optionsData.shotType}/>
-      </View>
-      <TouchableOpacity
-        style={styles.spinButton}
-        activeOpacity="0.5"
-        onPress={() => {}}
-      >
-        <Text style={styles.button}> Spin </Text>
-      </TouchableOpacity>
-    </SafeAreaView>
-  );
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.spinnerSet = null;
+  }
+
+  render() {
+    return (
+      <SafeAreaView style={styles.appContainer}>
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerText}>Select your shot</Text>
+        </View>
+        <View style={styles.spinnerContainer}>
+          <Spinner spinnerData={optionsData.discType} ref={(ref) => { this.spinnerSet = ref; }}/>
+          <Spinner spinnerData={optionsData.shotType} ref={(ref) => { this.spinnerSet = ref; }}/>
+        </View>
+        <TouchableOpacity
+          style={styles.spinButton}
+          activeOpacity="0.5"
+          onPress={() => { this.spinnerSet.spin() }}
+        >
+          <Text style={styles.button}> Spin </Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

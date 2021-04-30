@@ -5,8 +5,8 @@ import Constants from "../../Constants";
 export default class Option extends Component {
   constructor(props) {
     super(props);
-    this.option = this.props.optionObject.option;
-    this.id = this.props.optionObject.id;
+    // this.option = this.props.optionObject.option;
+    // this.id = this.props.optionObject.id;
     this.state = {
       color: null,
       backgroundColor: null,
@@ -14,7 +14,7 @@ export default class Option extends Component {
   }
 
   getColorScheme = () => {
-    let colorID = this.id;
+    let colorID = this.props.optionObject.id;
     if (colorID === 1) {
       this.state.color = "beige";
       this.state.backgroundColor = "gray";
@@ -59,7 +59,7 @@ export default class Option extends Component {
             fontSize: 20
           }}
         >
-          {this.option}
+          {this.props.optionObject.option}
         </Text>
       </View>
     );
