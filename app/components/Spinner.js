@@ -6,7 +6,6 @@ import OptionList from "./OptionList";
 export default class Spinner extends Component {
   constructor(props) {
     super(props);
-    // this.data = this.props.spinnerData;
     this.state = {
       width: Constants.MAX_WIDTH / 1.75,
       height: Constants.MAX_HEIGHT / 7,
@@ -14,9 +13,21 @@ export default class Spinner extends Component {
     this.optionSet = null;
   }
 
+  randomChoice = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
   spin = () => {
-    //   console.log(this.optionSet)
-    this.optionSet.scrollByOffset(25);
+    this.optionSet.scrollByOffset(this.randomChoice(7, (Constants.PATTERN.length*Constants.REPEAT)/3));
+    // this.optionSet.scrollByOffset(this.randomChoice(
+    //     (Constants.REPEAT - 6) * Constants.PATTERN.length,
+    //     (Constants.REPEAT - 5) * Constants.PATTERN.length
+    // ));
+    // let multiplier = this.randomChoice(0, 5);
+    // console.log(this.randomChoice(
+    //         (Constants.REPEAT - 6) * Constants.PATTERN.length,
+    //         (Constants.REPEAT - 2) * Constants.PATTERN.length
+    //     ))
   };
 
   render() {
