@@ -31,11 +31,6 @@ export default class Spinner extends Component {
   };
 
   render() {
-    // finds length of optionsList
-    // Array.apply(null, Array(this.props.spinnerData.length)).map((el, idx) => {
-    //   this.optionsList[idx] = idx;
-    // });
-    // console.log(this.optionsList);
     return (
       <View
         style={[
@@ -58,9 +53,10 @@ export default class Spinner extends Component {
 
 const styles = StyleSheet.create({
   reel: {
-    backgroundColor: "#C4BE6B",
+    // backgroundColor: "#C4BE6B",
     alignItems: "center",
     borderRadius: 10,
     overflow: "hidden",
+    borderWidth: 5,
   },
 });

@@ -44,13 +44,14 @@ const styles = StyleSheet.create({
     width: Constants.MAX_WIDTH,
     alignItems: "center",
     justifyContent: "space-evenly",
-    backgroundColor: "#565388",
+    backgroundColor: "#C9CFF2",
   },
   headerContainer: {
     height: "10%",
     width: Constants.MAX_WIDTH,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#F2B8A2",
   },
   headerText: {
     fontSize: 40,
@@ -60,13 +61,15 @@ const styles = StyleSheet.create({
   spinnerContainer: {
     width: Constants.MAX_WIDTH,
     height: Constants.MAX_HEIGHT / 2,
-    backgroundColor: "#565388",
+    backgroundColor: "#5B7A58",
     alignItems: "center",
     justifyContent: "space-evenly",
-    borderTopWidth: 10,
+    // borderTopWidth: 10,
     borderTopColor: "#C4BE6B",
     borderBottomWidth: 10,
     borderBottomColor: "#C4BE6B",
+    borderTopStartRadius: 600,
+    borderTopEndRadius: -170,
   },
   spinButton: {
     width: Constants.MAX_WIDTH / 2.5,
