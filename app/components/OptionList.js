@@ -45,7 +45,6 @@ export default class OptionList extends Component {
 
   render() {
     this.createReel();
-    console.log(this.position);
     return (
       <View style={styles.optionList}>
         <Animated.View
