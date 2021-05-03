@@ -9,6 +9,7 @@ import {
 import Spinner from "./app/components/Spinner";
 import Constants from "./Constants";
 import optionsData from "./app/assets/optionData";
+import BGWave from "./app/components/BGWave";
 
 export default class App extends Component {
   constructor(props) {
@@ -19,6 +20,9 @@ export default class App extends Component {
   render() {
     return (
       <SafeAreaView style={styles.appContainer}>
+        <View style={styles.waveContainer}>
+          <BGWave height={3000} width={100000} />
+        </View>
         <View style={styles.headerContainer}>
           <Text style={styles.headerText}>Select your shot</Text>
         </View>
@@ -61,7 +65,7 @@ const styles = StyleSheet.create({
   spinnerContainer: {
     width: Constants.MAX_WIDTH,
     height: Constants.MAX_HEIGHT / 2,
-    backgroundColor: "#5B7A58",
+    // backgroundColor: "#5B7A58",
     alignItems: "center",
     justifyContent: "space-evenly",
     // borderTopWidth: 10,
@@ -84,4 +88,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
+  waveContainer: {
+    position: "absolute",
+    width: Constants.MAX_WIDTH * 10,
+    height: Constants.MAX_HEIGHT,
+    justifyContent: "center",
+  }
 });
