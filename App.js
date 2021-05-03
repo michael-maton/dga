@@ -10,6 +10,7 @@ import Spinner from "./app/components/Spinner";
 import Constants from "./Constants";
 import optionsData from "./app/assets/optionData";
 import BGWave from "./app/components/BGWave";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default class App extends Component {
   constructor(props) {
@@ -20,20 +21,37 @@ export default class App extends Component {
   render() {
     return (
       <SafeAreaView style={styles.appContainer}>
+        <LinearGradient
+          colors={["#76b6ef", "#C9CFF2", "#F2B8A2", "#F2A007"]}
+          style={{ position: "absolute", height: Constants.MAX_HEIGHT, width: Constants.MAX_WIDTH }}
+        />
         <View style={styles.waveContainer}>
-          <BGWave height={3000} width={100000} />
+          <BGWave height={6000} />
         </View>
-        <View style={styles.headerContainer}>
+        {/* <View style={styles.headerContainer}>
           <Text style={styles.headerText}>Select your shot</Text>
-        </View>
+        </View> */}
         <View style={styles.spinnerContainer}>
-          <Spinner spinnerData={optionsData.discType} ref={(ref) => { this.spinnerSet[0] = ref; }}/>
-          <Spinner spinnerData={optionsData.shotType} ref={(ref) => { this.spinnerSet[1] = ref; }}/>
+          <Spinner
+            spinnerData={optionsData.discType}
+            ref={(ref) => {
+              this.spinnerSet[0] = ref;
+            }}
+          />
+          <Spinner
+            spinnerData={optionsData.shotType}
+            ref={(ref) => {
+              this.spinnerSet[1] = ref;
+            }}
+          />
         </View>
         <TouchableOpacity
           style={styles.spinButton}
           activeOpacity="0.5"
-          onPress={() => { this.spinnerSet[0].spin(); this.spinnerSet[1].spin(); }}
+          onPress={() => {
+            this.spinnerSet[0].spin();
+            this.spinnerSet[1].spin();
+          }}
         >
           <Text style={styles.button}> Spin </Text>
         </TouchableOpacity>
@@ -47,8 +65,8 @@ const styles = StyleSheet.create({
     height: Constants.MAX_HEIGHT,
     width: Constants.MAX_WIDTH,
     alignItems: "center",
-    justifyContent: "space-evenly",
-    backgroundColor: "#C9CFF2",
+    justifyContent: "center",
+    backgroundColor: "#76b6ef",
   },
   headerContainer: {
     height: "10%",
@@ -70,7 +88,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     // borderTopWidth: 10,
     borderTopColor: "#C4BE6B",
-    borderBottomWidth: 10,
+    // borderBottomWidth: 10,
     borderBottomColor: "#C4BE6B",
     borderTopStartRadius: 600,
     borderTopEndRadius: -170,
@@ -92,6 +110,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: Constants.MAX_WIDTH * 10,
     height: Constants.MAX_HEIGHT,
+    flex: 1,
     justifyContent: "center",
-  }
+    left: -300,
+  },
 });
