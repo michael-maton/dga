@@ -18,13 +18,6 @@ export default class OptionList extends Component {
   }
 
   scrollByOffset = (offset) => {
-    // if (
-    //   this.currentScrollPos >
-    //   Constants.PATTERN.length * Constants.REPEAT - (20 * this.props.height)
-    // ) {
-    //   this.currentScrollPos = this.position * this.props.height * -1;
-    // } else {
-    // }
     this.currentScrollPos = this.currentScrollPos + this.props.height * offset;
     this.position = this.position - offset;
     Animated.timing(this.state.scrollPos, {
@@ -72,7 +65,7 @@ const styles = StyleSheet.create({
     height: Constants.MAX_HEIGHT / 7,
     backgroundColor: "#C4BE6B",
     alignItems: "center",
-    borderRadius: 10,
+    // borderRadius: 10,
     overflow: "hidden",
   },
 });
