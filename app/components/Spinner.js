@@ -53,11 +53,13 @@ export default class Spinner extends Component {
 
 const styles = StyleSheet.create({
   reel: {
-    // backgroundColor: "#C4BE6B",
+    backgroundColor: "#C4BE6B",
     alignItems: "center",
-    borderRadius: 10,
+    justifyContent: "center",
+    // height: Constants.MAX_HEIGHT / 3,
+    borderRadius: 15,
     overflow: "hidden",
-    borderWidth: 5,
-    borderColor: "#3b3d22",
+    borderWidth: 10,
+    borderColor: "#645c44",
   },
 });

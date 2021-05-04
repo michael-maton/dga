@@ -28,12 +28,12 @@ export default class App extends Component {
       Animated.sequence([
         Animated.timing(this.state.animatedBG, {
           toValue: value,
-          duration: 10000,
+          duration: 40000,
           useNativeDriver: false,
         }),
         Animated.timing(this.state.animatedBG, {
           toValue: 0,
-          duration: 10000,
+          duration: 40000,
           useNativeDriver: false,
         })
       ]),
@@ -52,7 +52,7 @@ export default class App extends Component {
   // };
   
   componentDidMount() {
-    this.fadeIn(-3200);
+    this.fadeIn(-2000);
   }
   render() {
     // while (this.state.runAnimation === true) {
@@ -66,7 +66,7 @@ export default class App extends Component {
           style={{ position: "absolute", height: Constants.MAX_HEIGHT, width: Constants.MAX_WIDTH }}
         />
         <Animated.View style={[styles.waveContainer, {left: this.state.animatedBG}]}>
-          <BGWave height={6000} />
+          <BGWave height={2000} />
         </Animated.View>
         {/* <View style={styles.headerContainer}>
           <Text style={styles.headerText}>Select your shot</Text>
@@ -150,10 +150,11 @@ const styles = StyleSheet.create({
   },
   waveContainer: {
     position: "absolute",
-    width: 4200,
-    height: Constants.MAX_HEIGHT,
+    width: 3000,
+    height: Constants.MAX_HEIGHT / 2,
     flex: 1,
     justifyContent: "center",
+    paddingTop: 200,
     // left: -3000,
   },
 });
