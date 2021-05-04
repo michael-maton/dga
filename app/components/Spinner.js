@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     // height: Constants.MAX_HEIGHT / 3,
     borderRadius: 15,
     overflow: "hidden",
-    borderWidth: 10,
+    borderWidth: 7,
     borderColor: "#645c44",
   },
 });
