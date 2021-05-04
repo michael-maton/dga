@@ -5,6 +5,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Animated,
 } from "react-native";
 import Spinner from "./app/components/Spinner";
 import Constants from "./Constants";
@@ -16,18 +17,57 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.spinnerSet = [];
+    this.state = {
+      animatedBG: new Animated.Value(0),
+      runAnimation: true,
+    }
   }
 
+  fadeIn = (value) => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(this.state.animatedBG, {
+          toValue: value,
+          duration: 10000,
+          useNativeDriver: false,
+        }),
+        Animated.timing(this.state.animatedBG, {
+          toValue: 0,
+          duration: 10000,
+          useNativeDriver: false,
+        })
+      ]),
+    ).start()
+  };
+
+  // fadeIn = (value) => {
+  //   Animated.loop(Animated.timing(this.state.animatedBG, {
+  //     toValue: value,
+  //     duration: 10000,
+  //     useNativeDriver: false,
+  //   }).start(() => {
+  //     this.fadeIn(0)
+  //   }));
+    
+  // };
+  
+  componentDidMount() {
+    this.fadeIn(-3200);
+  }
   render() {
+    // while (this.state.runAnimation === true) {
+    //   this.fadeIn()
+    // }
+
     return (
       <SafeAreaView style={styles.appContainer}>
         <LinearGradient
           colors={["#76b6ef", "#C9CFF2", "#F2B8A2", "#F2A007"]}
           style={{ position: "absolute", height: Constants.MAX_HEIGHT, width: Constants.MAX_WIDTH }}
         />
-        <View style={styles.waveContainer}>
+        <Animated.View style={[styles.waveContainer, {left: this.state.animatedBG}]}>
           <BGWave height={6000} />
-        </View>
+        </Animated.View>
         {/* <View style={styles.headerContainer}>
           <Text style={styles.headerText}>Select your shot</Text>
         </View> */}
@@ -84,11 +124,12 @@ const styles = StyleSheet.create({
     width: Constants.MAX_WIDTH,
     height: Constants.MAX_HEIGHT / 2,
     // backgroundColor: "#5B7A58",
+    marginTop: 70,
     alignItems: "center",
     justifyContent: "space-evenly",
     // borderTopWidth: 10,
     borderTopColor: "#C4BE6B",
-    // borderBottomWidth: 10,
+    // borderWidth: 10,
     borderBottomColor: "#C4BE6B",
     borderTopStartRadius: 600,
     borderTopEndRadius: -170,
@@ -98,7 +139,8 @@ const styles = StyleSheet.create({
     height: Constants.MAX_HEIGHT / 12.5,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#7F7BA7",
+    backgroundColor: "#645c44",
+    marginTop: 80,
     borderRadius: 10,
   },
   button: {
@@ -108,10 +150,10 @@ const styles = StyleSheet.create({
   },
   waveContainer: {
     position: "absolute",
-    width: Constants.MAX_WIDTH * 10,
+    width: 4200,
     height: Constants.MAX_HEIGHT,
     flex: 1,
     justifyContent: "center",
-    left: -300,
+    // left: -3000,
   },
 });

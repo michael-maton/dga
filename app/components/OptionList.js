@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   optionList: {
     width: Constants.MAX_WIDTH / 2,
     height: Constants.MAX_HEIGHT / 7,
-    backgroundColor: "#C4BE6B",
+    // backgroundColor: "#C4BE6B",
     alignItems: "center",
     // borderRadius: 10,
     overflow: "hidden",

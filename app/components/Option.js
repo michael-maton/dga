@@ -52,7 +52,7 @@ export default class Option extends Component {
 
   optionStyle = () => {
     return {
-      backgroundColor: this.state.backgroundColor,
+    //   backgroundColor: this.state.backgroundColor,
       width: Constants.MAX_WIDTH / 2,
       height: Constants.MAX_HEIGHT / 7,
       justifyContent: "center",

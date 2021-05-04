@@ -58,5 +58,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: "hidden",
     borderWidth: 5,
+    borderColor: "#3b3d22",
   },
 });
