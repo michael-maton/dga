@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     height: Constants.MAX_HEIGHT / 2,
     flex: 1,
     justifyContent: "center",
-    paddingTop: 200,
+    paddingTop: 300,
     // left: -3000,
   },
 });

@@ -9,7 +9,7 @@ interface waveProps {
 const BGWave = ({ color = "#647362", height = 3000} : waveProps) => {
     return (
         <Svg height={height} viewBox="0 0 1440 320">
-            <Path fill={color} fillOpacity="1" d="M0,192L120,197.3C240,203,480,213,720,213.3C960,213,1200,203,1320,197.3L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"/>
+            <Path fill={color} fillOpacity="1" />
         </Svg>
     )
 }
