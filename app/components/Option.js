@@ -50,20 +50,20 @@ export default class Option extends Component {
     // }
   };
 
-  optionStyle = () => {
-    return {
-    //   backgroundColor: this.state.backgroundColor,
-      width: Constants.MAX_WIDTH / 2,
-      height: Constants.MAX_HEIGHT / 7,
-      justifyContent: "center",
-      alignItems: "center",
-    };
-  };
+  // optionStyle = () => {
+  //   return {
+  //   //   backgroundColor: this.state.backgroundColor,
+  //     width: Constants.MAX_WIDTH / 2,
+  //     height: Constants.MAX_HEIGHT / 7,
+  //     justifyContent: "center",
+  //     alignItems: "center",
+  //   };
+  // };
 
   render() {
     this.getColorScheme();
     return (
-      <View style={this.optionStyle()}>
+      <View style={styles.optionContainer}>
         <Text
           style={{
             color: this.state.color,
@@ -82,6 +82,6 @@ const styles = StyleSheet.create({
     width: Constants.MAX_WIDTH / 2,
     height: Constants.MAX_HEIGHT / 7,
     alignItems: "center",
-    borderRadius: 1000,
+    justifyContent: "center",
   },
 });
