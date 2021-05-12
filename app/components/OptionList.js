@@ -6,7 +6,6 @@ import Option from "./Option";
 export default class OptionList extends Component {
   constructor(props) {
     super(props);
-    // this.scrollPatternString = "123456423165735264186413257432516";
     this.scrollPattern = Constants.PATTERN.repeat(Constants.REPEAT).split("");
     this.fullReel = [];
     this.position = Constants.PATTERN.length * Constants.REPEAT - 1;
@@ -25,7 +24,9 @@ export default class OptionList extends Component {
       duration: 1000,
       useNativeDriver: true,
     }).start(() => {
-      this.position = (Constants.REPEAT - (Constants.REPEAT - 1)) * Constants.PATTERN.length + (this.position % Constants.PATTERN.length);
+      this.position =
+        (Constants.REPEAT - (Constants.REPEAT - 1)) * Constants.PATTERN.length +
+        (this.position % Constants.PATTERN.length);
       this.currentScrollPos = this.position * this.props.height * -1;
       this.state.scrollPos.setValue(this.currentScrollPos);
     });
@@ -62,9 +63,7 @@ const styles = StyleSheet.create({
   optionList: {
     width: Constants.MAX_WIDTH / 2,
     height: Constants.MAX_HEIGHT / 7,
-    // backgroundColor: "#C4BE6B",
     alignItems: "center",
-    // borderRadius: 10,
     overflow: "hidden",
   },
 });

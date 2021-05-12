@@ -20,7 +20,7 @@ export default class App extends Component {
     this.state = {
       animatedBG: new Animated.Value(0),
       runAnimation: true,
-    }
+    };
   }
 
   fadeIn = (value) => {
@@ -35,42 +35,30 @@ export default class App extends Component {
           toValue: 0,
           duration: 40000,
           useNativeDriver: false,
-        })
-      ]),
-    ).start()
+        }),
+      ])
+    ).start();
   };
 
-  // fadeIn = (value) => {
-  //   Animated.loop(Animated.timing(this.state.animatedBG, {
-  //     toValue: value,
-  //     duration: 10000,
-  //     useNativeDriver: false,
-  //   }).start(() => {
-  //     this.fadeIn(0)
-  //   }));
-    
-  // };
-  
   componentDidMount() {
     this.fadeIn(-2000);
   }
   render() {
-    // while (this.state.runAnimation === true) {
-    //   this.fadeIn()
-    // }
-
     return (
       <SafeAreaView style={styles.appContainer}>
         <LinearGradient
           colors={["#76b6ef", "#C9CFF2", "#F2B8A2", "#F2A007"]}
-          style={{ position: "absolute", height: Constants.MAX_HEIGHT, width: Constants.MAX_WIDTH }}
+          style={{
+            position: "absolute",
+            height: Constants.MAX_HEIGHT,
+            width: Constants.MAX_WIDTH,
+          }}
         />
-        <Animated.View style={[styles.waveContainer, {left: this.state.animatedBG}]}>
+        <Animated.View
+          style={[styles.waveContainer, { left: this.state.animatedBG }]}
+        >
           <BGWave height={2000} />
         </Animated.View>
-        {/* <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Select your shot</Text>
-        </View> */}
         <View style={styles.spinnerContainer}>
           <Spinner
             spinnerData={optionsData.discType}
@@ -117,19 +105,15 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 40,
-    // fontWeight: "bold",
     color: "#C4BE6B",
   },
   spinnerContainer: {
     width: Constants.MAX_WIDTH,
     height: Constants.MAX_HEIGHT / 2,
-    // backgroundColor: "#5B7A58",
     marginTop: 70,
     alignItems: "center",
     justifyContent: "space-evenly",
-    // borderTopWidth: 10,
     borderTopColor: "#C4BE6B",
-    // borderWidth: 10,
     borderBottomColor: "#C4BE6B",
     borderTopStartRadius: 600,
     borderTopEndRadius: -170,
@@ -155,6 +139,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     paddingTop: 300,
-    // left: -3000,
   },
 });
