@@ -1,17 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
+
 import Constants from "./Constants";
+import SlotsSelectorGame from "./app/Screens/ShotSelectorGame/SlotsSelectorGame";
 
-import SlotsSelectorGame from "./app/Pages/SlotsSelectorGame";
-
-export default class App extends Component {
-  render() {
-    return (
-      <SafeAreaView style={styles.appContainer}>
-        <SlotsSelectorGame />
-      </SafeAreaView>
-    );
-  }
+export default function App() {
+  return (
+    <SafeAreaView style={styles.appContainer}>
+      <SlotsSelectorGame />
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({

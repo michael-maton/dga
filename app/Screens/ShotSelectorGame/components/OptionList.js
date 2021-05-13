@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Animated } from "react-native";
-import Constants from "../../Constants";
+import Constants from "../../../../Constants";
 import Option from "./Option";
 
 export default class OptionList extends Component {

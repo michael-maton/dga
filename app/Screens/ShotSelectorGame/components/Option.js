@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import Constants from "../../Constants";
+import Constants from "../../../../Constants";
 
 export default class Option extends Component {
   constructor(props) {

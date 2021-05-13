@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Dimensions } from "react-native";
-import Constants from "../../Constants";
+import { StyleSheet, View } from "react-native";
+import Constants from "../../../../Constants";
 import OptionList from "./OptionList";
 
 export default class Spinner extends Component {
