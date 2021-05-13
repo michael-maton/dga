@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
   Animated,
 } from "react-native";
-import Spinner from "../components/Spinner";
-import Constants from "../../Constants";
-import optionsData from "../assets/optionData";
-import BGWave from "../components/BGWave";
+import Spinner from "./components/Spinner";
+import Constants from "../../../Constants";
+import optionsData from "../../assets/optionData";
+import BGWave from "./components/BGWave";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default class SlotsSelectorGame extends Component {
