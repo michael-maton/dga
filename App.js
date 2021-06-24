@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack"
 import Constants from "./Constants";
 import SlotsSelectorGame from "./app/Screens/ShotSelectorGame/SlotsSelectorGame";
 import Landing from "./app/Screens/Landing/LandingPage";
+import CreateAccount from "./app/Screens/Landing/CreateAccount";
 const AuthStack = createStackNavigator();
 
 export default function App() {
@@ -15,7 +16,8 @@ export default function App() {
         // </SafeAreaView>
     <NavigationContainer>
       <AuthStack.Navigator>
-          <AuthStack.Screen name="Landing" component={Landing} style={styles.appContainer}/>
+          <AuthStack.Screen name="Landing" component={Landing} options={{ title: "Sign In" }}/>
+          <AuthStack.Screen name="CreateAccount" component={CreateAccount} options={{ title: "Create Account" }}/>
       </AuthStack.Navigator>
     </NavigationContainer>
   );
