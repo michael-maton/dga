@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   });
 
 
-export const SignIn = ({ navigation }) => {
+export default function Landing ({ navigation }) {
     return (
         <SafeAreaView style={styles.appContainer}>
             <Text>Sign In Screen</Text>
