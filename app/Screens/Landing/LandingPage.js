@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-
+import BG from "./BG";
 import Constants from "../../../Constants";
 import CreateAccount from "./CreateAccount";
 import SignIn from "./SignIn";
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
 export default function Landing({ navigation }) {
   return (
     <SafeAreaView style={styles.appContainer}>
+     
       <LinearGradient
         colors={["#76b6ef", "#C9CFF2", "#F2B8A2", "#F2A007"]}
         style={{
@@ -56,7 +57,8 @@ export default function Landing({ navigation }) {
           height: Constants.MAX_HEIGHT,
           width: Constants.MAX_WIDTH,
         }}
-      />
+      /> 
+      <BG />
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.authButtons}
