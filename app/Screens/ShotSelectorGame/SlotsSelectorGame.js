@@ -90,7 +90,7 @@ export default class SlotsSelectorGame extends Component {
 
 const styles = StyleSheet.create({
   slotGameContainer: {
-    height: Constants.MAX_HEIGHT,
+    height: Constants.MAX_HEIGHT - 150,
     width: Constants.MAX_WIDTH,
     alignItems: "center",
     justifyContent: "center",
