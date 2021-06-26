@@ -18,6 +18,7 @@ export default function App() {
       <AuthStack.Navigator>
           <AuthStack.Screen name="Landing" component={Landing} options={{ title: "Sign In" }}/>
           <AuthStack.Screen name="CreateAccount" component={CreateAccount} options={{ title: "Create Account" }}/>
+          <AuthStack.Screen name="SlotsSelectorGame" component={SlotsSelectorGame} options={{ title: "Shot Selector" }}/>
       </AuthStack.Navigator>
     </NavigationContainer>
   );
