@@ -35,6 +35,7 @@ export default class Spinner extends Component {
       >
         <OptionList
           recentSpins={this.props.recentSpins}
+          updateRecentSpins={this.props.updateRecentSpins}
           options={this.props.spinnerData}
           height={this.state.height}
           width={this.state.width}
