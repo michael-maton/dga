@@ -6,19 +6,19 @@ export default class Option extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: "#5B7A58",
-      backgroundColor: "#D3C7D7",
+      color: "white",
+      // backgroundColor: "#D3C7D7",
     };
   }
 
-  optionStyle = () => {
-    return {
-      width: Constants.MAX_WIDTH / 2,
-      height: Constants.MAX_HEIGHT / 7,
-      justifyContent: "center",
-      alignItems: "center",
-    };
-  };
+  // optionStyle = () => {
+  //   return {
+  //     width: Constants.MAX_WIDTH / 2,
+  //     height: Constants.MAX_HEIGHT / 7,
+  //     justifyContent: "center",
+  //     alignItems: "center",
+  //   };
+  // };
 
   render() {
     return (
