@@ -59,10 +59,15 @@ export default class SlotsSelectorGame extends Component {
   };
 
   render() {
+    const { navigation } = this.props;
     return (
       <SafeAreaView style={styles.slotGameContainer}>
         <View style={styles.recentListContainer}>
-          <TouchableOpacity style={styles.recentList}>
+          <TouchableOpacity
+            title="Recent Shots"
+            onPress={() => navigation.push("RecentList", {recentSpins: this.recentSpins})}
+            style={styles.recentList}
+          >
             <Text style={styles.buttonText}> Recent Spins </Text>
           </TouchableOpacity>
         </View>
@@ -129,7 +134,6 @@ const styles = StyleSheet.create({
     width: Constants.MAX_WIDTH,
     justifyContent: "center",
     paddingRight: 35,
-
   },
   recentList: {
     // height: Constants.MAX_HEIGHT,
