@@ -13,13 +13,15 @@ export default class Spinner extends Component {
     this.optionSet = null;
   }
 
+  // returns number [min, max]
   randomChoice = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
+  // spinning function
   spin = () => {
     this.optionSet.scrollByOffset(
-      this.randomChoice(7, (Constants.PATTERN.length * Constants.REPEAT) / 3)
+      this.randomChoice(7, Constants.PATTERN.length)
     );
   };
 
@@ -32,6 +34,7 @@ export default class Spinner extends Component {
         ]}
       >
         <OptionList
+          recentSpins={this.props.recentSpins}
           options={this.props.spinnerData}
           height={this.state.height}
           width={this.state.width}
@@ -46,12 +49,13 @@ export default class Spinner extends Component {
 
 const styles = StyleSheet.create({
   reel: {
-    backgroundColor: "#C4BE6B",
+    // backgroundColor: "#C4BE6B",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 15,
+    borderRadius: 10,
     overflow: "hidden",
-    borderWidth: 7,
-    borderColor: "#645c44",
+    borderWidth: 1,
+    borderColor: "white",
+    // borderColor: "#645c44",
   },
 });
