@@ -4,9 +4,10 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/
 import { createStackNavigator } from "@react-navigation/stack"
  
 import Constants from "./Constants";
-import SlotsSelectorGame from "./app/Screens/ShotSelectorGame/SlotsSelectorGame";
 import Landing from "./app/Screens/Landing/LandingPage";
 import CreateAccount from "./app/Screens/Landing/CreateAccount";
+import SlotsSelectorGame from "./app/Screens/ShotSelectorGame/SlotsSelectorGame";
+import RecentList from "./app/Screens/ShotSelectorGame/components/RecentList";
 const AuthStack = createStackNavigator();
 
 const MyTheme = {
@@ -31,6 +32,7 @@ export default function App() {
           <AuthStack.Screen name="Landing" component={Landing} options={{ title: "" }}/>
           <AuthStack.Screen name="CreateAccount" component={CreateAccount} options={{ title: "Create Account" }}/>
           <AuthStack.Screen name="SlotsSelectorGame" component={SlotsSelectorGame} options={{ title: "Shot Selector" }}/>
+          <AuthStack.Screen name="RecentList" component={RecentList} options={{ title: "Recent Shots" }}/>
       </AuthStack.Navigator>
     </NavigationContainer>
   );

@@ -9,7 +9,6 @@ export default class OptionList extends Component {
     this.scrollPattern = Constants.PATTERN.repeat(Constants.REPEAT).split(""); // converts pattern to array
     this.fullReel = [];
     this.position = Constants.PATTERN.length * Constants.REPEAT - 1;
-    // this.recentSpins = []
     this.currentScrollPos =
       (Constants.PATTERN.length - 1) * this.props.height * -1;
     this.state = {
@@ -20,31 +19,28 @@ export default class OptionList extends Component {
   // spinning function
   scrollByOffset = (offset) => {
     this.currentScrollPos = this.currentScrollPos + this.props.height * offset;
-    // console.log(this.fullReel)
     this.position = this.position - offset;
-    this.buildRecent(this.position)
-    // console.log(this.position)
-    // let recentSpin = this.fullReel.filter((obj) => obj.id == this.position)[0].option
-    // this.recentSpins.push(recentSpin)
-    // console.log(this.recentSpins)
+    this.buildRecent(this.position);
+
     Animated.timing(this.state.scrollPos, {
       toValue: this.currentScrollPos,
       duration: 1000,
       useNativeDriver: true,
     }).start(() => {
       this.position =
-      (Constants.REPEAT - (Constants.REPEAT - 1)) * Constants.PATTERN.length +
-      (this.position % Constants.PATTERN.length);
+        (Constants.REPEAT - (Constants.REPEAT - 1)) * Constants.PATTERN.length +
+        (this.position % Constants.PATTERN.length);
       this.currentScrollPos = this.position * this.props.height * -1;
       this.state.scrollPos.setValue(this.currentScrollPos);
     });
   };
-  
+
+  // builds recent list
   buildRecent = (recentPosition) => {
-    let recentSpin = this.fullReel.filter((obj) => obj.id == recentPosition)[0].option
-    this.props.recentSpins.push(recentSpin)
-    // console.log(this.props.recentSpins)
-  }
+    let recentSpin = this.fullReel.filter((obj) => obj.id == recentPosition)[0]
+      .option;
+    this.props.updateRecentSpins(recentSpin);
+  };
 
   // scrolls through pattern array and maps each number to a shot/disc type
   createReel = () => {
