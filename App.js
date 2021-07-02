@@ -1,13 +1,14 @@
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
  
 import Constants from "./Constants";
 import Landing from "./app/Screens/Landing/LandingPage";
 import CreateAccount from "./app/Screens/Landing/CreateAccount";
-import SlotsSelectorGame from "./app/Screens/ShotSelectorGame/SlotsSelectorGame";
+import ShotSelectorGame from "./app/Screens/ShotSelectorGame/ShotSelectorGame";
 import RecentList from "./app/Screens/ShotSelectorGame/components/RecentList";
+import Home from "./app/Screens/Home/Home";
 const AuthStack = createStackNavigator();
 
 const MyTheme = {
@@ -24,14 +25,12 @@ const MyTheme = {
 
 export default function App() {
   return (
-        // <SafeAreaView style={styles.appContainer}>
-        //   <Landing />
-        // </SafeAreaView>
     <NavigationContainer theme={MyTheme}>
       <AuthStack.Navigator>
           <AuthStack.Screen name="Landing" component={Landing} options={{ title: "" }}/>
           <AuthStack.Screen name="CreateAccount" component={CreateAccount} options={{ title: "Create Account" }}/>
-          <AuthStack.Screen name="SlotsSelectorGame" component={SlotsSelectorGame} options={{ title: "Shot Selector" }}/>
+          <AuthStack.Screen name="Home" component={Home} options={{ title: "Home" }}/>
+          <AuthStack.Screen name="ShotSelectorGame" component={ShotSelectorGame} options={{ title: "Shot Selector" }}/>
           <AuthStack.Screen name="RecentList" component={RecentList} options={{ title: "Recent Shots" }}/>
       </AuthStack.Navigator>
     </NavigationContainer>

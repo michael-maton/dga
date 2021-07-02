@@ -10,11 +10,10 @@ import {
 import Spinner from "./components/Spinner";
 import Constants from "../../../Constants";
 import optionsData from "../../assets/optionData";
-import RecentList from "./components/RecentList";
 import BGWave from "./components/BGWave";
 import { LinearGradient } from "expo-linear-gradient";
 
-export default class SlotsSelectorGame extends Component {
+export default class ShotSelectorGame extends Component {
   constructor(props) {
     super(props);
     this.spinnerSet = [];
@@ -85,6 +84,8 @@ export default class SlotsSelectorGame extends Component {
           <BGWave height={2000} />
         </Animated.View> */}
         <View style={styles.spinnerContainer}>
+
+          {/* ----- DISC TYPE SPINNER ----- */}
           <Spinner
             recentSpins={this.recentSpins}
             updateRecentSpins={this.updateRecentSpins}
@@ -92,7 +93,9 @@ export default class SlotsSelectorGame extends Component {
             ref={(ref) => {
               this.spinnerSet[0] = ref;
             }}
-          />
+            />
+
+          {/* ----- SHOT TYPE SPINNER ----- */}
           <Spinner
             recentSpins={this.recentSpins}
             updateRecentSpins={this.updateRecentSpins}
@@ -101,11 +104,11 @@ export default class SlotsSelectorGame extends Component {
               this.spinnerSet[1] = ref;
             }}
           />
+
         </View>
         <View style={styles.spinButtonContainer}>
           <TouchableOpacity
             style={styles.spinButton}
-            // activeOpacity="1"
             onPress={() => {
               this.spinnerSet[0].spin();
               this.spinnerSet[1].spin();
@@ -127,7 +130,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#76b6ef",
-    // paddingBottom: 150,
   },
   recentListContainer: {
     flex: 0.5,
@@ -136,7 +138,6 @@ const styles = StyleSheet.create({
     paddingRight: 35,
   },
   recentList: {
-    // height: Constants.MAX_HEIGHT,
     justifyContent: "center",
     alignItems: "flex-end",
   },
@@ -145,21 +146,17 @@ const styles = StyleSheet.create({
     width: Constants.MAX_WIDTH,
     height: Constants.MAX_HEIGHT / 2,
     flex: 3,
-    // marginTop: 70,
     alignItems: "center",
     justifyContent: "space-evenly",
-    // borderWidth: 1,
   },
   spinButtonContainer: {
     flex: 1.5,
-    // borderWidth: 1,
     justifyContent: "flex-start",
   },
   spinButton: {
     width: 200,
     alignItems: "center",
     justifyContent: "center",
-    // elevation: 8,
     borderRadius: 10,
     paddingVertical: 15,
     paddingHorizontal: 12,
@@ -177,6 +174,5 @@ const styles = StyleSheet.create({
     height: Constants.MAX_HEIGHT / 2,
     flex: 1,
     justifyContent: "center",
-    // paddingTop: 300,
   },
 });
