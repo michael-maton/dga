@@ -22,11 +22,16 @@ export default class RecentList extends Component {
     console.log("SHOT", this.shotTypes);
     return (
       <SafeAreaView style={styles.listContainer}>
-        {this.recentSpins.map((spin, idx) => (
-          <View style={styles.singleRecent}>
-            {/* {idx % 2 != 0 ? <View style={styles.discType}><Text key={idx}>{spin}</Text></View> : <View style={styles.shotType}><Text key={idx}>{spin}</Text></View>} */}
-          </View>          
-        ))}
+       <View style={styles.discType}>
+          {this.discTypes.map((spin, idx) => (
+            <Text key={idx}>{spin}</Text>
+          ))}
+        </View>          
+        <View style={styles.shotType}>
+          {this.shotTypes.map((spin, idx) => (
+            <Text key={idx}>{spin}</Text>
+          ))}
+        </View>          
       </SafeAreaView>
     );
   }
@@ -38,13 +43,9 @@ const styles = StyleSheet.create({
     padding: 20,
     height: Constants.MAX_HEIGHT,
     width: Constants.MAX_WIDTH,
-    
-  },
-  singleRecent: {
     flexDirection: "row",
-    width: Constants.MAX_WIDTH,
-    borderWidth: 1,
-
+    alignItems: "flex-start",
+    
   },
   discType: {
     flex: 1,
