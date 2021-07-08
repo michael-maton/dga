@@ -54,7 +54,7 @@ export default class ShotSelectorGame extends Component {
   updateRecentSpins = (recent) => {
     this.recentSpins = [...this.recentSpins, recent];
 
-    console.log(this.recentSpins);
+    // console.log(this.recentSpins);
   };
 
   render() {
