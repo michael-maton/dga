@@ -27,22 +27,22 @@ export default class RecentList extends Component {
     console.log("DISC", this.discTypes);
     console.log("SHOT", this.shotTypes);
     return (
-      <SafeAreaView style={styles.listContainer}>
+      <SafeAreaView style={styles.listWrapper}>
         {this.noRecentShots == true ?
-          <Text>No recent shots</Text> 
+          <Text style={styles.noRecents}>No recent shots</Text> 
           : 
           <View style={styles.listContainer}>  
             <View style={styles.discType}>
               {this.discTypes.map((spin, idx) => (
-                <Text key={idx}>{spin}</Text>
+                <Text style={styles.shotText} key={idx}>{spin}</Text>
               ))}
-          </View>          
-          <View style={styles.shotType}>
-            {this.shotTypes.map((spin, idx) => (
-              <Text key={idx}>{spin}</Text>
-              ))}
-          </View> 
-        </View>
+            </View>          
+            <View style={styles.shotType}>
+              {this.shotTypes.map((spin, idx) => (
+                <Text style={styles.shotText} key={idx}>{spin}</Text>
+                ))}
+            </View> 
+          </View>
         }   
       </SafeAreaView>
     );
@@ -50,8 +50,18 @@ export default class RecentList extends Component {
 }
 
 const styles = StyleSheet.create({
-  listContainer: {
+  listWrapper: {
+    height: Constants.MAX_HEIGHT,
+    width: Constants.MAX_WIDTH,
     backgroundColor: "#76b6ef",
+    alignItems: "center",
+  },
+  noRecents: {
+    color: "white",
+    fontSize: 25,
+    paddingTop: 100,
+  },
+  listContainer: {
     padding: 20,
     height: Constants.MAX_HEIGHT,
     width: Constants.MAX_WIDTH,
@@ -70,6 +80,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#76b6ef",
+  },
+  shotText: {
+    color: "white",
+    fontSize: 20,
   },
 
 });
