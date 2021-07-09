@@ -8,12 +8,18 @@ export default class RecentList extends Component {
     this.recentSpins = this.props.route.params.recentSpins;
     this.discTypes = []
     this.shotTypes = []
+    this.noRecentShots = true
   }
 
   generateLists = () => {
-    this.recentSpins.forEach((spin, idx) => (
-      idx % 2 == 0 ? this.discTypes = [...this.discTypes, spin] : this.shotTypes = [...this.shotTypes, spin]
-    ))
+    if (this.recentSpins.length != 0) {
+      this.noRecentShots = false
+      this.recentSpins.forEach((spin, idx) => (
+        idx % 2 == 0 ? this.discTypes = [...this.discTypes, spin] : this.shotTypes = [...this.shotTypes, spin]
+        ))
+      
+    } 
+      
   }
 
   render() {
@@ -22,16 +28,22 @@ export default class RecentList extends Component {
     console.log("SHOT", this.shotTypes);
     return (
       <SafeAreaView style={styles.listContainer}>
-       <View style={styles.discType}>
-          {this.discTypes.map((spin, idx) => (
-            <Text key={idx}>{spin}</Text>
-          ))}
-        </View>          
-        <View style={styles.shotType}>
-          {this.shotTypes.map((spin, idx) => (
-            <Text key={idx}>{spin}</Text>
-          ))}
-        </View>          
+        {this.noRecentShots == true ?
+          <Text>No recent shots</Text> 
+          : 
+          <View style={styles.listContainer}>  
+            <View style={styles.discType}>
+              {this.discTypes.map((spin, idx) => (
+                <Text key={idx}>{spin}</Text>
+              ))}
+          </View>          
+          <View style={styles.shotType}>
+            {this.shotTypes.map((spin, idx) => (
+              <Text key={idx}>{spin}</Text>
+              ))}
+          </View> 
+        </View>
+        }   
       </SafeAreaView>
     );
   }
