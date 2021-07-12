@@ -18,6 +18,7 @@ export default class ShotSelectorGame extends Component {
     super(props);
     this.spinnerSet = [];
     this.recentSpins = [];
+    this.disabled = false,
     this.state = {
       animatedBG: new Animated.Value(0),
       runAnimation: true,
@@ -53,10 +54,12 @@ export default class ShotSelectorGame extends Component {
   // }
   updateRecentSpins = (recent) => {
     this.recentSpins = [recent, ...this.recentSpins];
+    this.disabled = false,
 
+    console.log(this.recentSpins.length)
     // console.log(this.recentSpins);
   };
-
+  
   render() {
     const { navigation } = this.props;
     return (
@@ -66,8 +69,9 @@ export default class ShotSelectorGame extends Component {
             title="Recent Shots"
             onPress={() => navigation.push("RecentList", {recentSpins: this.recentSpins})}
             style={styles.recentList}
+            disabled={this.disabled}
           >
-            <Text style={styles.buttonText}> Recent Spins </Text>
+            <Text style={this.disabled ? styles.buttonTextDisabled : styles.buttonText}> Recent Spins </Text>
           </TouchableOpacity>
         </View>
         {/* <LinearGradient
@@ -167,6 +171,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
+  },
+  buttonTextDisabled: {
+    color: "#76b6ef",
   },
   waveContainer: {
     position: "absolute",
