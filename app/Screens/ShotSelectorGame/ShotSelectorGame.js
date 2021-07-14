@@ -12,8 +12,8 @@ import Constants from "../../../Constants";
 import optionsData from "../../assets/optionData";
 import BGWave from "./components/BGWave";
 import { LinearGradient } from "expo-linear-gradient";
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCog } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faCog } from "@fortawesome/free-solid-svg-icons";
 
 export default class ShotSelectorGame extends Component {
   constructor(props) {
@@ -65,8 +65,15 @@ export default class ShotSelectorGame extends Component {
     return (
       <SafeAreaView style={styles.slotGameContainer}>
         <View style={styles.recentListContainer}>
-          <TouchableOpacity style={styles.settingsContainer}>
-            <FontAwesomeIcon style={styles.settingsButton} icon={ faCog } size={ 20 }/>
+          <TouchableOpacity
+            onPress={() => navigation.push("Settings")}
+            style={styles.settingsContainer}
+          >
+            <FontAwesomeIcon
+              style={styles.settingsButton}
+              icon={faCog}
+              size={20}
+            />
           </TouchableOpacity>
           <TouchableOpacity
             title="Recent Shots"
@@ -157,7 +164,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-start",
   },
-  settingsButton :{
+  settingsButton: {
     color: "white",
   },
   recentList: {
