@@ -12,17 +12,19 @@ import Constants from "../../../Constants";
 import optionsData from "../../assets/optionData";
 import BGWave from "./components/BGWave";
 import { LinearGradient } from "expo-linear-gradient";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faCog } from "@fortawesome/free-solid-svg-icons";
 
 export default class ShotSelectorGame extends Component {
   constructor(props) {
     super(props);
     this.spinnerSet = [];
     this.recentSpins = [];
-    this.disabled = false,
-    this.state = {
-      animatedBG: new Animated.Value(0),
-      runAnimation: true,
-    };
+    (this.disabled = false),
+      (this.state = {
+        animatedBG: new Animated.Value(0),
+        runAnimation: true,
+      });
     this.updateRecentSpins = this.updateRecentSpins.bind(this);
   }
 
@@ -54,24 +56,41 @@ export default class ShotSelectorGame extends Component {
   // }
   updateRecentSpins = (recent) => {
     this.recentSpins = [recent, ...this.recentSpins];
-    this.disabled = false,
-
-    console.log(this.recentSpins.length)
+    (this.disabled = false), console.log(this.recentSpins.length);
     // console.log(this.recentSpins);
   };
-  
+
   render() {
     const { navigation } = this.props;
     return (
       <SafeAreaView style={styles.slotGameContainer}>
         <View style={styles.recentListContainer}>
           <TouchableOpacity
+            onPress={() => navigation.push("Settings")}
+            style={styles.settingsContainer}
+          >
+            <FontAwesomeIcon
+              style={styles.settingsButton}
+              icon={faCog}
+              size={20}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
             title="Recent Shots"
-            onPress={() => navigation.push("RecentList", {recentSpins: this.recentSpins})}
+            onPress={() =>
+              navigation.push("RecentList", { recentSpins: this.recentSpins })
+            }
             style={styles.recentList}
             disabled={this.disabled}
           >
-            <Text style={this.disabled ? styles.buttonTextDisabled : styles.buttonText}> Recent Spins </Text>
+            <Text
+              style={
+                this.disabled ? styles.buttonTextDisabled : styles.buttonText
+              }
+            >
+              {" "}
+              Recent Spins{" "}
+            </Text>
           </TouchableOpacity>
         </View>
         {/* <LinearGradient
@@ -88,7 +107,6 @@ export default class ShotSelectorGame extends Component {
           <BGWave height={2000} />
         </Animated.View> */}
         <View style={styles.spinnerContainer}>
-
           {/* ----- DISC TYPE SPINNER ----- */}
           <Spinner
             recentSpins={this.recentSpins}
@@ -97,7 +115,7 @@ export default class ShotSelectorGame extends Component {
             ref={(ref) => {
               this.spinnerSet[0] = ref;
             }}
-            />
+          />
 
           {/* ----- SHOT TYPE SPINNER ----- */}
           <Spinner
@@ -108,7 +126,6 @@ export default class ShotSelectorGame extends Component {
               this.spinnerSet[1] = ref;
             }}
           />
-
         </View>
         <View style={styles.spinButtonContainer}>
           <TouchableOpacity
@@ -138,8 +155,17 @@ const styles = StyleSheet.create({
   recentListContainer: {
     flex: 0.5,
     width: Constants.MAX_WIDTH,
-    justifyContent: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
     paddingRight: 35,
+    paddingLeft: 35,
+  },
+  settingsContainer: {
+    justifyContent: "center",
+    alignItems: "flex-start",
+  },
+  settingsButton: {
+    color: "white",
   },
   recentList: {
     justifyContent: "center",

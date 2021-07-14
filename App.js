@@ -8,6 +8,7 @@ import Landing from "./app/Screens/Landing/LandingPage";
 import CreateAccount from "./app/Screens/Landing/CreateAccount";
 import ShotSelectorGame from "./app/Screens/ShotSelectorGame/ShotSelectorGame";
 import RecentList from "./app/Screens/ShotSelectorGame/components/RecentList";
+import Settings from "./app/Screens/ShotSelectorGame/Settings";
 import Home from "./app/Screens/Home/Home";
 const AuthStack = createStackNavigator();
 
@@ -32,6 +33,7 @@ export default function App() {
           <AuthStack.Screen name="Home" component={Home} options={{ title: "Home" }}/>
           <AuthStack.Screen name="ShotSelectorGame" component={ShotSelectorGame} options={{ title: "Shot Selector" }}/>
           <AuthStack.Screen name="RecentList" component={RecentList} options={{ title: "Recent Shots" }}/>
+          <AuthStack.Screen name="Settings" component={Settings} options={{ title: "Edit Shot Settings" }}/>
       </AuthStack.Navigator>
     </NavigationContainer>
   );
