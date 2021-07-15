@@ -8,7 +8,7 @@ import Landing from "./app/Screens/Landing/LandingPage";
 import CreateAccount from "./app/Screens/Landing/CreateAccount";
 import ShotSelectorGame from "./app/Screens/ShotSelectorGame/ShotSelectorGame";
 import RecentList from "./app/Screens/ShotSelectorGame/components/RecentList";
-import Settings from "./app/Screens/ShotSelectorGame/Settings";
+import Settings from "./app/Screens/ShotSelectorGame/components/Settings";
 import Home from "./app/Screens/Home/Home";
 const AuthStack = createStackNavigator();
 
