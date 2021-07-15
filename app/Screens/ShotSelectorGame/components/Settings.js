@@ -18,7 +18,7 @@ export default class Settings extends Component {
               <BouncyCheckbox
               key={idx}
               size={30}
-              style={{ paddingBottom: 10, paddingLeft: 40}}
+              style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
               fillColor="#76b6ef"
               unfillColor="#FFFFFF"
               text={item.option}
@@ -35,7 +35,7 @@ export default class Settings extends Component {
               <BouncyCheckbox
                 key={idx}
                 size={30}
-                style={{ paddingBottom: 10, paddingLeft: 40 }}
+                style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
                 fillColor="#76b6ef"
                 unfillColor="#FFFFFF"
                 text={item.option}
