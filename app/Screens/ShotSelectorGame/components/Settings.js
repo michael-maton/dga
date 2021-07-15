@@ -12,12 +12,13 @@ export default class Settings extends Component {
     return (
       <SafeAreaView style={styles.settingsWrapper}>
         <View style={styles.checkboxes}>
+          <Text style={styles.titles}>Disc Type:</Text>
           {optionData.discType.map((item, idx) => {
             return (
               <BouncyCheckbox
               key={idx}
               size={30}
-              style={{ paddingBottom: 10 }}
+              style={{ paddingBottom: 10, paddingLeft: 40}}
               fillColor="#76b6ef"
               unfillColor="#FFFFFF"
               text={item.option}
@@ -28,12 +29,13 @@ export default class Settings extends Component {
               />
               );
             })}
+          <Text style={styles.titles}>Shot Type:</Text>
           {optionData.shotType.map((item, idx) => {
             return (
               <BouncyCheckbox
                 key={idx}
                 size={30}
-                style={{ paddingBottom: 10 }}
+                style={{ paddingBottom: 10, paddingLeft: 40 }}
                 fillColor="#76b6ef"
                 unfillColor="#FFFFFF"
                 text={item.option}
@@ -59,5 +61,11 @@ const styles = StyleSheet.create({
   checkboxes: {
     paddingTop: 10,
     color: "white",
+  },
+  titles: {
+    color: "white",
+    fontSize: 20,
+    paddingBottom: 10,
+    paddingLeft: 10,
   },
 });
