@@ -28,6 +28,22 @@ export default class Settings extends Component {
               />
               );
             })}
+          {optionData.shotType.map((item, idx) => {
+            return (
+              <BouncyCheckbox
+                key={idx}
+                size={30}
+                style={{ paddingBottom: 10 }}
+                fillColor="#76b6ef"
+                unfillColor="#FFFFFF"
+                text={item.option}
+                textStyle={{ color: "white", textDecorationLine: "none" }}
+                isChecked={this.state.defaultCheck}
+                iconStyle={{ borderColor: "white" }}
+                onPress={() => {}}
+              />
+            );
+          })}
         </View>
       </SafeAreaView>
     );
