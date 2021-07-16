@@ -37,7 +37,7 @@ export default class OptionList extends Component {
 
   // builds recent list
   buildRecent = async (recentPosition) => {
-    let recentSpin = this.fullReel.filter((obj) => obj.id == recentPosition)[0]
+    let recentSpin = await this.fullReel.filter((obj) => obj.id == recentPosition)[0]
       .option;
     this.props.updateRecentSpins(recentSpin);
   };
