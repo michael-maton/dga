@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { SafeAreaView, Text, View, StyleSheet } from "react-native";
+import { SafeAreaView, Text, View, StyleSheet, ScrollView } from "react-native";
 import Constants from "../../../../Constants";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import optionData from "../../../assets/optionData";
@@ -11,7 +11,7 @@ export default class Settings extends Component {
   render() {
     return (
       <SafeAreaView style={styles.settingsWrapper}>
-        <View style={styles.checkboxes}>
+        <ScrollView contentContainerStyle={styles.checkboxes}>
           <Text style={styles.titles}>Disc Type:</Text>
           {optionData.discType.map((item, idx) => {
             return (
@@ -46,7 +46,7 @@ export default class Settings extends Component {
               />
             );
           })}
-        </View>
+        </ScrollView>
       </SafeAreaView>
     );
   }
@@ -54,7 +54,6 @@ export default class Settings extends Component {
 
 const styles = StyleSheet.create({
   settingsWrapper: {
-    height: Constants.MAX_HEIGHT,
     width: Constants.MAX_WIDTH,
     backgroundColor: "#76b6ef",
   },
