@@ -21,7 +21,7 @@ export default class Spinner extends Component {
   // spinning function
   spin = () => {
     this.optionSet.scrollByOffset(
-      this.randomChoice(7, Constants.PATTERN.length)
+      this.randomChoice(7, this.props.pattern.length)
     );
   };
 
@@ -39,6 +39,7 @@ export default class Spinner extends Component {
           options={this.props.spinnerData}
           height={this.state.height}
           width={this.state.width}
+          pattern={this.props.pattern}
           ref={(ref) => {
             this.optionSet = ref;
           }}

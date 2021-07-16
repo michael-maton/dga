@@ -6,11 +6,11 @@ import Option from "./Option";
 export default class OptionList extends Component {
   constructor(props) {
     super(props);
-    this.scrollPattern = Constants.PATTERN.repeat(Constants.REPEAT).split(""); // converts pattern to array
+    this.scrollPattern = this.props.pattern.repeat(Constants.REPEAT).split(""); // converts pattern to array
     this.fullReel = [];
-    this.position = Constants.PATTERN.length * Constants.REPEAT - 1;
+    this.position = this.props.pattern.length * Constants.REPEAT - 1;
     this.currentScrollPos =
-      (Constants.PATTERN.length - 1) * this.props.height * -1;
+      (this.props.pattern.length - 1) * this.props.height * -1;
     this.state = {
       scrollPos: new Animated.Value(this.currentScrollPos),
     };
@@ -28,8 +28,8 @@ export default class OptionList extends Component {
       useNativeDriver: true,
     }).start(() => {
       this.position =
-        (Constants.REPEAT - (Constants.REPEAT - 1)) * Constants.PATTERN.length +
-        (this.position % Constants.PATTERN.length);
+        (Constants.REPEAT - (Constants.REPEAT - 1)) * this.props.pattern.length +
+        (this.position % this.props.pattern.length);
       this.currentScrollPos = this.position * this.props.height * -1;
       this.state.scrollPos.setValue(this.currentScrollPos);
     });
