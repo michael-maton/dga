@@ -17,18 +17,17 @@ import { faCog } from "@fortawesome/free-solid-svg-icons";
 // import PatternCreator from "./helpers/PatternCreator";
 
 function PatternCreator(data) {
-  let dataCopy = data;
   let patternArr = [];
   let pattern = "";
 
-  dataCopy.forEach((e) => {
+  data.forEach((e) => {
     patternArr.push(e.luck);
   });
 
   while (patternArr.length > 0) {
     patternArr = patternArr.filter((item) => item !== 0);
     for (let i = 0; i <= patternArr.length - 1; i++) {
-      pattern += dataCopy[i].shot_id.toString();
+      pattern += data[i].shot_id.toString();
       patternArr[i] -= 1;
     }
   }
