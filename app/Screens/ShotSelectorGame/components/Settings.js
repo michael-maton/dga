@@ -55,11 +55,13 @@ export default class Settings extends Component {
 const styles = StyleSheet.create({
   settingsWrapper: {
     width: Constants.MAX_WIDTH,
+    height: Constants.MAX_HEIGHT,
     backgroundColor: "#76b6ef",
   },
   checkboxes: {
     paddingTop: 10,
     color: "white",
+    backgroundColor: "#76b6ef",
   },
   titles: {
     color: "white",
