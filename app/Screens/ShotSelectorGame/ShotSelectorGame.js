@@ -32,6 +32,10 @@ function PatternCreator(data) {
       patternArr[i] -= 1;
     }
   }
+
+  while (pattern.length < 33) {
+    pattern = pattern.repeat(2);
+  }
   
   return pattern;
 }
