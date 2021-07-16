@@ -14,30 +14,7 @@ import BGWave from "./components/BGWave";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
-// import PatternCreator from "./helpers/PatternCreator";
-
-function PatternCreator(data) {
-  let patternArr = [];
-  let pattern = "";
-
-  data.forEach((e) => {
-    patternArr.push(e.luck);
-  });
-
-  while (patternArr.length > 0) {
-    patternArr = patternArr.filter((item) => item !== 0);
-    for (let i = 0; i <= patternArr.length - 1; i++) {
-      pattern += data[i].shot_id.toString();
-      patternArr[i] -= 1;
-    }
-  }
-
-  while (pattern.length < 33) {
-    pattern = pattern.repeat(2);
-  }
-  
-  return pattern;
-}
+import PatternCreator from "./helpers/PatternCreator";
 
 export default class ShotSelectorGame extends Component {
   constructor(props) {
