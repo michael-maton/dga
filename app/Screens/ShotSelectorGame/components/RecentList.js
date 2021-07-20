@@ -23,8 +23,6 @@ export default class RecentList extends Component {
 
   render() {
     this.generateLists();
-    console.log("DISC", this.discTypes);
-    console.log("SHOT", this.shotTypes);
     return (
       <SafeAreaView style={styles.listWrapper}>
         {this.noRecentShots == true ?
