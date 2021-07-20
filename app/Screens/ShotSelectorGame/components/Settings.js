@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { SafeAreaView, Text, View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import {
+  SafeAreaView,
+  Text,
+  View,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import Constants from "../../../../Constants";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import optionData from "../../../assets/optionData";
@@ -9,13 +16,13 @@ import { editList } from "../../../Store/actions/shots";
 
 class Settings extends Component {
   constructor(props) {
-      super(props);
+    super(props);
   }
   state = { defaultCheck: true };
 
   render() {
     const { navigation } = this.props;
-    
+
     return (
       <SafeAreaView style={styles.settingsWrapper}>
         <ScrollView contentContainerStyle={styles.checkboxes}>
@@ -23,19 +30,19 @@ class Settings extends Component {
           {optionData.discType.map((item, idx) => {
             return (
               <BouncyCheckbox
-              key={idx}
-              size={30}
-              style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
-              fillColor="#76b6ef"
-              unfillColor="#FFFFFF"
-              text={item.option}
-              textStyle={{ color: "white", textDecorationLine: "none" }}
-              isChecked={this.state.defaultCheck}
-              iconStyle={{ borderColor: "white" }}
-              onPress={() => {}}
+                key={idx}
+                size={30}
+                style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
+                fillColor="#76b6ef"
+                unfillColor="#FFFFFF"
+                text={item.option}
+                textStyle={{ color: "white", textDecorationLine: "none" }}
+                isChecked={this.state.defaultCheck}
+                iconStyle={{ borderColor: "white" }}
+                onPress={() => {}}
               />
-              );
-            })}
+            );
+          })}
           <Text style={styles.titles}>Shot Type:</Text>
           {optionData.shotType.map((item, idx) => {
             return (
@@ -57,12 +64,11 @@ class Settings extends Component {
             title="Back"
             style={styles.saveButton}
             onPress={() => {
-                this.props.editShotList(optionData2)
-                navigation.goBack()
-                navigation.pop()
-                navigation.push("ShotSelectorGame")
-              }
-            }
+              this.props.editShotList(optionData2);
+              navigation.goBack();
+              navigation.pop();
+              navigation.push("ShotSelectorGame");
+            }}
           >
             <Text style={styles.saveButtonText}> Save </Text>
           </TouchableOpacity>
@@ -74,18 +80,17 @@ class Settings extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    shots: state.shots.shotList
-  }
-}
+    shots: state.shots.shotList,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     editShotList: (newList) => dispatch(editList(newList)),
-    editTitle: (newList) => dispatch(editTitle(newList))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings)
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);
 
 const styles = StyleSheet.create({
   settingsWrapper: {

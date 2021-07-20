@@ -15,7 +15,7 @@ import Constants from "../../../Constants";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { editList, editPattern } from "../../Store/actions/shots";
+import { editList } from "../../Store/actions/shots";
 
 class ShotSelectorGame extends Component {
   constructor(props) {
