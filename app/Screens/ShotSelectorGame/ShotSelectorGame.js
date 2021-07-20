@@ -6,7 +6,7 @@ import {
   View,
   TouchableOpacity,
   Animated,
-  Button
+  Button,
 } from "react-native";
 import Spinner from "./components/Spinner";
 import Constants from "../../../Constants";
@@ -16,7 +16,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { editList, editPattern } from "../../Store/actions/shots";
-
 
 class ShotSelectorGame extends Component {
   constructor(props) {
@@ -105,15 +104,14 @@ const mapStateToProps = (state) => {
     discPattern: state.shots.discPattern,
     shotPattern: state.shots.shotPattern,
     pattern: state.shots.pattern,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     editShotList: (newList) => dispatch(editList(newList)),
-    editPattern: (newPattern) => dispatch(editPattern(newPattern))
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShotSelectorGame);
 

@@ -2,8 +2,8 @@ import { createStore, combineReducers } from "redux";
 import shotsReducer from "./reducers/shotsReducer";
 
 const rootReducer = combineReducers({
-    shots: shotsReducer,
-})
+  shots: shotsReducer,
+});
 
 const configureStore = () => createStore(rootReducer);
 
