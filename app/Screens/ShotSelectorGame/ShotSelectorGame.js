@@ -6,17 +6,18 @@ import {
   View,
   TouchableOpacity,
   Animated,
+  Button,
 } from "react-native";
 import Spinner from "./components/Spinner";
 import Constants from "../../../Constants";
-import optionsData from "../../assets/optionData";
-import BGWave from "./components/BGWave";
-import { LinearGradient } from "expo-linear-gradient";
+// import optionData from "../../assets/optionData";
+// import optionData2 from "../../assets/optionData2";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
-import PatternCreator from "./helpers/PatternCreator";
+import { connect } from "react-redux";
+import { editList } from "../../Store/actions/shots";
 
-export default class ShotSelectorGame extends Component {
+class ShotSelectorGame extends Component {
   constructor(props) {
     super(props);
     this.spinnerSet = [];
@@ -25,29 +26,8 @@ export default class ShotSelectorGame extends Component {
       animatedBG: new Animated.Value(0),
       runAnimation: true,
     };
-    this.updateRecentSpins = this.updateRecentSpins.bind(this);
+    // this.updateRecentSpins = this.updateRecentSpins.bind(this);
   }
-
-  // fadeIn = (value) => {
-  //   Animated.loop(
-  //     Animated.sequence([
-  //       Animated.timing(this.state.animatedBG, {
-  //         toValue: value,
-  //         duration: 40000,
-  //         useNativeDriver: false,
-  //       }),
-  //       Animated.timing(this.state.animatedBG, {
-  //         toValue: 0,
-  //         duration: 40000,
-  //         useNativeDriver: false,
-  //       }),
-  //     ])
-  //   ).start();
-  // };
-
-  // componentDidMount() {
-  //   this.fadeIn(-2000);
-  // }
 
   updateRecentSpins = (recent) => {
     this.recentSpins = [recent, ...this.recentSpins];
@@ -55,8 +35,7 @@ export default class ShotSelectorGame extends Component {
 
   render() {
     const { navigation } = this.props;
-    let discPattern = PatternCreator(optionsData.discType);
-    let shotPattern = PatternCreator(optionsData.shotType);
+
     return (
       <SafeAreaView style={styles.slotGameContainer}>
         <View style={styles.recentListContainer}>
@@ -80,26 +59,13 @@ export default class ShotSelectorGame extends Component {
             <Text style={styles.buttonText}> Recent Spins </Text>
           </TouchableOpacity>
         </View>
-        {/* <LinearGradient
-          colors={["#76b6ef", "#C9CFF2", "#F2B8A2", "#F2A007"]}
-          style={{
-            position: "absolute",
-            height: Constants.MAX_HEIGHT,
-            width: Constants.MAX_WIDTH,
-          }}
-        /> */}
-        {/* <Animated.View
-          style={[styles.waveContainer, { left: this.state.animatedBG }]}
-        >
-          <BGWave height={2000} />
-        </Animated.View> */}
         <View style={styles.spinnerContainer}>
           {/* ----- DISC TYPE SPINNER ----- */}
           <Spinner
             recentSpins={this.recentSpins}
             updateRecentSpins={this.updateRecentSpins}
-            spinnerData={optionsData.discType}
-            pattern={discPattern}
+            spinnerData={this.props.shotList.discType}
+            pattern={this.props.discPattern}
             ref={(ref) => {
               this.spinnerSet[0] = ref;
             }}
@@ -109,8 +75,8 @@ export default class ShotSelectorGame extends Component {
           <Spinner
             recentSpins={this.recentSpins}
             updateRecentSpins={this.updateRecentSpins}
-            spinnerData={optionsData.shotType}
-            pattern={shotPattern}
+            spinnerData={this.props.shotList.shotType}
+            pattern={this.props.shotPattern}
             ref={(ref) => {
               this.spinnerSet[1] = ref;
             }}
@@ -131,6 +97,23 @@ export default class ShotSelectorGame extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    shotList: state.shots.shotList,
+    discPattern: state.shots.discPattern,
+    shotPattern: state.shots.shotPattern,
+    pattern: state.shots.pattern,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    editShotList: (newList) => dispatch(editList(newList)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShotSelectorGame);
 
 const styles = StyleSheet.create({
   slotGameContainer: {

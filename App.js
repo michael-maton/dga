@@ -2,6 +2,10 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
+
+import { Provider } from "react-redux";
+import configureStore from "./app/Store/store";
+const store = configureStore();
  
 import Constants from "./Constants";
 import Landing from "./app/Screens/Landing/LandingPage";
@@ -24,19 +28,24 @@ const MyTheme = {
   },
 };
 
-export default function App() {
+export default class App extends React.Component {
+
+  render() {
   return (
-    <NavigationContainer theme={MyTheme}>
-      <AuthStack.Navigator>
-          <AuthStack.Screen name="Landing" component={Landing} options={{ title: "" }}/>
-          <AuthStack.Screen name="CreateAccount" component={CreateAccount} options={{ title: "Create Account" }}/>
-          <AuthStack.Screen name="Home" component={Home} options={{ title: "Home" }}/>
-          <AuthStack.Screen name="ShotSelectorGame" component={ShotSelectorGame} options={{ title: "Shot Selector" }}/>
-          <AuthStack.Screen name="RecentList" component={RecentList} options={{ title: "Recent Shots" }}/>
-          <AuthStack.Screen name="Settings" component={Settings} options={{ title: "Edit Shot Settings" }}/>
-      </AuthStack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer theme={MyTheme}>
+        <AuthStack.Navigator>
+            <AuthStack.Screen name="Landing" component={Landing} options={{ title: "" }}/>
+            <AuthStack.Screen name="CreateAccount" component={CreateAccount} options={{ title: "Create Account" }}/>
+            <AuthStack.Screen name="Home" component={Home} options={{ title: "Home" }}/>
+            <AuthStack.Screen name="ShotSelectorGame" component={ShotSelectorGame} options={{ title: "Shot Selector" }}/>
+            <AuthStack.Screen name="RecentList" component={RecentList} options={{ title: "Recent Shots" }}/>
+            <AuthStack.Screen name="Settings" component={Settings} options={{ title: "Edit Shot Settings" }}/>
+        </AuthStack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
+  }
 }
 
 const styles = StyleSheet.create({
