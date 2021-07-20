@@ -14,7 +14,6 @@ import Constants from "../../../Constants";
 // import optionData2 from "../../assets/optionData2";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
-import PatternCreator from "./helpers/PatternCreator";
 import { connect } from "react-redux";
 import { editList, editPattern } from "../../Store/actions/shots";
 
@@ -37,8 +36,7 @@ class ShotSelectorGame extends Component {
 
   render() {
     const { navigation } = this.props;
-    this.discPattern = PatternCreator(this.props.shots.discType);
-    this.shotPattern = PatternCreator(this.props.shots.shotType);
+
     return (
       <SafeAreaView style={styles.slotGameContainer}>
         <View style={styles.recentListContainer}>
@@ -67,8 +65,8 @@ class ShotSelectorGame extends Component {
           <Spinner
             recentSpins={this.recentSpins}
             updateRecentSpins={this.updateRecentSpins}
-            spinnerData={this.props.shots.discType}
-            pattern={this.discPattern}
+            spinnerData={this.props.shotList.discType}
+            pattern={this.props.discPattern}
             ref={(ref) => {
               this.spinnerSet[0] = ref;
             }}
@@ -78,8 +76,8 @@ class ShotSelectorGame extends Component {
           <Spinner
             recentSpins={this.recentSpins}
             updateRecentSpins={this.updateRecentSpins}
-            spinnerData={this.props.shots.shotType}
-            pattern={this.shotPattern}
+            spinnerData={this.props.shotList.shotType}
+            pattern={this.props.shotPattern}
             ref={(ref) => {
               this.spinnerSet[1] = ref;
             }}
@@ -103,7 +101,9 @@ class ShotSelectorGame extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    shots: state.shots.shotList,
+    shotList: state.shots.shotList,
+    discPattern: state.shots.discPattern,
+    shotPattern: state.shots.shotPattern,
     pattern: state.shots.pattern,
   }
 }
