@@ -43,7 +43,7 @@ class ShotSelectorGame extends Component {
       <SafeAreaView style={styles.slotGameContainer}>
         <View style={styles.recentListContainer}>
           <TouchableOpacity
-            onPress={() => navigation.push("Settings", { editShotList: (newList) => this.props.editShotList(newList) })}
+            onPress={() => navigation.push("Settings")}
             style={styles.settingsContainer}
           >
             <FontAwesomeIcon

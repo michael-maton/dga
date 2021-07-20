@@ -57,7 +57,7 @@ class Settings extends Component {
             title="Back"
             style={styles.saveButton}
             onPress={() => {
-                this.props.route.params.editShotList(optionData2)
+                this.props.editShotList(optionData2)
                 navigation.goBack()
                 navigation.pop()
                 navigation.push("ShotSelectorGame")
@@ -78,14 +78,14 @@ const mapStateToProps = (state) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     editShotList: (newList) => dispatch(editList(newList)),
-//     editTitle: (newList) => dispatch(editTitle(newList))
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    editShotList: (newList) => dispatch(editList(newList)),
+    editTitle: (newList) => dispatch(editTitle(newList))
+  }
+}
 
-export default connect(mapStateToProps)(Settings)
+export default connect(mapStateToProps, mapDispatchToProps)(Settings)
 
 const styles = StyleSheet.create({
   settingsWrapper: {
