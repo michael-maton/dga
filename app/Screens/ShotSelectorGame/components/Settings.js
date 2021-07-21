@@ -18,7 +18,6 @@ class Settings extends Component {
   constructor(props) {
     super(props);
   }
-  state = { defaultCheck: true };
 
   render() {
     const { navigation } = this.props;
@@ -27,7 +26,7 @@ class Settings extends Component {
       <SafeAreaView style={styles.settingsWrapper}>
         <ScrollView contentContainerStyle={styles.checkboxes}>
           <Text style={styles.titles}>Disc Type:</Text>
-          {optionData.discType.map((item, idx) => {
+          {this.props.shots.discType.map((item, idx) => {
             return (
               <BouncyCheckbox
                 key={idx}
@@ -37,14 +36,14 @@ class Settings extends Component {
                 unfillColor="#FFFFFF"
                 text={item.option}
                 textStyle={{ color: "white", textDecorationLine: "none" }}
-                isChecked={this.state.defaultCheck}
+                isChecked={item.luck > 0 ? true : false}
                 iconStyle={{ borderColor: "white" }}
-                onPress={() => {}}
+                onPress={() => { console.log(item, idx) }}
               />
             );
           })}
           <Text style={styles.titles}>Shot Type:</Text>
-          {optionData.shotType.map((item, idx) => {
+          {this.props.shots.shotType.map((item, idx) => {
             return (
               <BouncyCheckbox
                 key={idx}
@@ -54,7 +53,7 @@ class Settings extends Component {
                 unfillColor="#FFFFFF"
                 text={item.option}
                 textStyle={{ color: "white", textDecorationLine: "none" }}
-                isChecked={this.state.defaultCheck}
+                isChecked={item.luck > 0 ? true : false}
                 iconStyle={{ borderColor: "white" }}
                 onPress={() => {}}
               />
