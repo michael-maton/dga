@@ -17,10 +17,14 @@ import { editList } from "../../../Store/actions/shots";
 function Settings({ shots, editShotList, navigation }) {
   const [shotForm, setShotForm] = useState(shots);
 
-  const handleDeselect = (type, idx) => {
+  const handleLuckToggle = (type, idx, currentLuck) => {
+    let newLuck = 1;
+    if (currentLuck != 0) {
+      newLuck = 0;
+    }
     const updatedShot = {
       ...shotForm[type][idx],
-      luck: 0,
+      luck: newLuck,
     };
     setShotForm({
       ...shotForm,
@@ -49,9 +53,7 @@ function Settings({ shots, editShotList, navigation }) {
               iconStyle={{ borderColor: "white" }}
               value={1}
               onPress={() => {
-                if (item.luck > 0) {
-                  handleDeselect("discType", idx);
-                }
+                handleLuckToggle("discType", idx, item.luck);
               }}
             />
           );
@@ -70,9 +72,7 @@ function Settings({ shots, editShotList, navigation }) {
               isChecked={item.luck > 0 ? true : false}
               iconStyle={{ borderColor: "white" }}
               onPress={() => {
-                if (item.luck > 0) {
-                  handleDeselect("shotType", idx);
-                }
+                handleLuckToggle("shotType", idx, item.luck);
               }}
             />
           );
