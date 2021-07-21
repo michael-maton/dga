@@ -14,70 +14,85 @@ import optionData2 from "../../../assets/optionData2";
 import { connect } from "react-redux";
 import { editList } from "../../../Store/actions/shots";
 
-function Settings ({ shots, editShotList, navigation }) {
+function Settings({ shots, editShotList, navigation }) {
+  const [shotForm, setShotForm] = useState(shots);
 
-    const [discForm, setDiscForm] = useState(shots.discType);
-    const [shotForm, setShotForm] = useState(shots.shotType);
+  const handleDeselect = (type, idx) => {
+    const updatedShot = {
+      ...shotForm[type][idx],
+      luck: 0,
+    };
+    setShotForm({
+      ...shotForm,
+      [shotForm[type]]: [
+        ...shotForm[type],
+        (shotForm[type][idx] = updatedShot),
+      ],
+    });
+  };
 
-    return (
-      <SafeAreaView style={styles.settingsWrapper}>
-        <ScrollView contentContainerStyle={styles.checkboxes}>
-          <Text style={styles.titles}>Disc Type:</Text>
-          {discForm.map((item, idx) => {
-            return (
-              <BouncyCheckbox
-                key={idx}
-                size={30}
-                style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
-                fillColor="#76b6ef"
-                unfillColor="#FFFFFF"
-                text={item.option}
-                textStyle={{ color: "white", textDecorationLine: "none" }}
-                isChecked={item.luck > 0 ? true : false}
-                iconStyle={{ borderColor: "white" }}
-                onPress={() => { 
-                  console.log(item, idx);
-                  if (item.luck > 0) {
-
-                  }
-                 }}
-              />
-            );
-          })}
-          <Text style={styles.titles}>Shot Type:</Text>
-          {shotForm.map((item, idx) => {
-            return (
-              <BouncyCheckbox
-                key={idx}
-                size={30}
-                style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
-                fillColor="#76b6ef"
-                unfillColor="#FFFFFF"
-                text={item.option}
-                textStyle={{ color: "white", textDecorationLine: "none" }}
-                isChecked={item.luck > 0 ? true : false}
-                iconStyle={{ borderColor: "white" }}
-                onPress={() => {}}
-              />
-            );
-          })}
-          <TouchableOpacity
-            title="Back"
-            style={styles.saveButton}
-            onPress={() => {
-              editShotList(optionData2);
-              navigation.goBack();
-              navigation.pop();
-              navigation.push("ShotSelectorGame");
-            }}
-          >
-            <Text style={styles.saveButtonText}> Save </Text>
-          </TouchableOpacity>
-        </ScrollView>
-      </SafeAreaView>
-    );
-  }
-
+  return (
+    <SafeAreaView style={styles.settingsWrapper}>
+      <ScrollView contentContainerStyle={styles.checkboxes}>
+        <Text style={styles.titles}>Disc Type:</Text>
+        {shotForm.discType.map((item, idx) => {
+          return (
+            <BouncyCheckbox
+              key={idx}
+              size={30}
+              style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
+              fillColor="#76b6ef"
+              unfillColor="#FFFFFF"
+              text={item.option}
+              textStyle={{ color: "white", textDecorationLine: "none" }}
+              isChecked={item.luck > 0 ? true : false}
+              iconStyle={{ borderColor: "white" }}
+              value={1}
+              onPress={() => {
+                if (item.luck > 0) {
+                  handleDeselect("discType", idx);
+                }
+              }}
+            />
+          );
+        })}
+        <Text style={styles.titles}>Shot Type:</Text>
+        {shotForm.shotType.map((item, idx) => {
+          return (
+            <BouncyCheckbox
+              key={idx}
+              size={30}
+              style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
+              fillColor="#76b6ef"
+              unfillColor="#FFFFFF"
+              text={item.option}
+              textStyle={{ color: "white", textDecorationLine: "none" }}
+              isChecked={item.luck > 0 ? true : false}
+              iconStyle={{ borderColor: "white" }}
+              onPress={() => {
+                if (item.luck > 0) {
+                  handleDeselect("shotType", idx);
+                }
+              }}
+            />
+          );
+        })}
+        <TouchableOpacity
+          title="Back"
+          style={styles.saveButton}
+          onPress={() => {
+            editShotList(shotForm);
+            navigation.goBack();
+            navigation.pop();
+            navigation.push("ShotSelectorGame");
+          }}
+        >
+          <Text style={styles.saveButtonText}> Save </Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
 
 const mapStateToProps = (state) => {
   return {
