@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   Text,
@@ -14,19 +14,16 @@ import optionData2 from "../../../assets/optionData2";
 import { connect } from "react-redux";
 import { editList } from "../../../Store/actions/shots";
 
-class Settings extends Component {
-  constructor(props) {
-    super(props);
-  }
+function Settings ({ shots, editShotList, navigation }) {
 
-  render() {
-    const { navigation } = this.props;
+    const [discForm, setDiscForm] = useState(shots.discType);
+    const [shotForm, setShotForm] = useState(shots.shotType);
 
     return (
       <SafeAreaView style={styles.settingsWrapper}>
         <ScrollView contentContainerStyle={styles.checkboxes}>
           <Text style={styles.titles}>Disc Type:</Text>
-          {this.props.shots.discType.map((item, idx) => {
+          {discForm.map((item, idx) => {
             return (
               <BouncyCheckbox
                 key={idx}
@@ -38,12 +35,17 @@ class Settings extends Component {
                 textStyle={{ color: "white", textDecorationLine: "none" }}
                 isChecked={item.luck > 0 ? true : false}
                 iconStyle={{ borderColor: "white" }}
-                onPress={() => { console.log(item, idx) }}
+                onPress={() => { 
+                  console.log(item, idx);
+                  if (item.luck > 0) {
+
+                  }
+                 }}
               />
             );
           })}
           <Text style={styles.titles}>Shot Type:</Text>
-          {this.props.shots.shotType.map((item, idx) => {
+          {shotForm.map((item, idx) => {
             return (
               <BouncyCheckbox
                 key={idx}
@@ -63,7 +65,7 @@ class Settings extends Component {
             title="Back"
             style={styles.saveButton}
             onPress={() => {
-              this.props.editShotList(optionData2);
+              editShotList(optionData2);
               navigation.goBack();
               navigation.pop();
               navigation.push("ShotSelectorGame");
@@ -75,7 +77,7 @@ class Settings extends Component {
       </SafeAreaView>
     );
   }
-}
+
 
 const mapStateToProps = (state) => {
   return {
