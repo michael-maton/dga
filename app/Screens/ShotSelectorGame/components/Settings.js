@@ -37,47 +37,71 @@ function Settings({ shots, editShotList, navigation }) {
 
   return (
     <SafeAreaView style={styles.settingsWrapper}>
-      <ScrollView contentContainerStyle={styles.checkboxes}>
+      <ScrollView contentContainerStyle={styles.settingsContainer}>
         <Text style={styles.titles}>Disc Type:</Text>
         {shotForm.discType.map((item, idx) => {
           if (item.shot_id != 9) {
             return (
-              <BouncyCheckbox
-                key={idx}
-                size={30}
-                style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
-                fillColor="#76b6ef"
-                unfillColor="#FFFFFF"
-                text={item.option}
-                textStyle={{ color: "white", textDecorationLine: "none" }}
-                isChecked={item.luck > 0 ? true : false}
-                iconStyle={{ borderColor: "white" }}
-                value={1}
-                onPress={() => {
-                  handleLuckToggle("discType", idx, item.luck);
-                }}
-              />
+              <View key={idx} style={styles.individualWrapper}>
+                <BouncyCheckbox
+                  size={30}
+                  style={{ paddingVertical: 5, marginLeft: 40, width: 190 }}
+                  fillColor="#76b6ef"
+                  unfillColor="#FFFFFF"
+                  text={item.option}
+                  textStyle={{ color: "white", textDecorationLine: "none" }}
+                  isChecked={item.luck > 0 ? true : false}
+                  iconStyle={{ borderColor: "white" }}
+                  value={1}
+                  onPress={() => {
+                    handleLuckToggle("discType", idx, item.luck);
+                  }}
+                />
+                <View style={styles.luckWrapper}>
+                  <TouchableOpacity>
+                    <Text style={styles.luckText}>Low</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Text style={styles.luckText}>Med</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Text style={styles.luckText}>High</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
             );
           }
         })}
-        <Text style={styles.titles}>Shot Type:</Text>
+        <Text style={[styles.titles, { paddingTop: 10 }]}>Shot Type:</Text>
         {shotForm.shotType.map((item, idx) => {
           if (item.shot_id != 9) {
             return (
-              <BouncyCheckbox
-                key={idx}
-                size={30}
-                style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
-                fillColor="#76b6ef"
-                unfillColor="#FFFFFF"
-                text={item.option}
-                textStyle={{ color: "white", textDecorationLine: "none" }}
-                isChecked={item.luck > 0 ? true : false}
-                iconStyle={{ borderColor: "white" }}
-                onPress={() => {
-                  handleLuckToggle("shotType", idx, item.luck);
-                }}
-              />
+              <View key={idx} style={styles.individualWrapper}>
+                <BouncyCheckbox
+                  size={30}
+                  style={{ paddingVertical: 5, marginLeft: 40, width: 190 }}
+                  fillColor="#76b6ef"
+                  unfillColor="#FFFFFF"
+                  text={item.option}
+                  textStyle={{ color: "white", textDecorationLine: "none" }}
+                  isChecked={item.luck > 0 ? true : false}
+                  iconStyle={{ borderColor: "white" }}
+                  onPress={() => {
+                    handleLuckToggle("shotType", idx, item.luck);
+                  }}
+                />
+                <View style={styles.luckWrapper}>
+                  <TouchableOpacity>
+                    <Text style={styles.luckText}>Low</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Text style={styles.luckText}>Med</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Text style={styles.luckText}>High</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
             );
           }
         })}
@@ -118,10 +142,17 @@ const styles = StyleSheet.create({
     // height: Constants.MAX_HEIGHT,
     backgroundColor: "#76b6ef",
   },
-  checkboxes: {
+  settingsContainer: {
     paddingTop: 10,
     color: "white",
     backgroundColor: "#76b6ef",
+    // alignItems: "center",
+  },
+  individualWrapper: {
+    flexDirection: "row",
+    flex: 1,
+    // borderWidth: 1,
+    alignItems: "center",
   },
   titles: {
     color: "white",
@@ -129,10 +160,28 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingLeft: 10,
   },
+  luckWrapper: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    // borderWidth: 1,
+    paddingHorizontal: 10,
+  },
+  luckText: {
+    color: "white",
+    fontSize: 10,
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "white",
+    paddingVertical: 5,
+    paddingHorizontal: 6,
+    textAlign: "center",
+  },
   saveButton: {
     width: Constants.MAX_WIDTH,
     justifyContent: "center",
     alignItems: "center",
+    padding: 20,
   },
   saveButtonText: {
     width: 100,
