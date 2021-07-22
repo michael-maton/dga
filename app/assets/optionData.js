@@ -40,6 +40,11 @@ const optionData = {
       option: "Wild",
       luck: 1,
     },
+    {
+      shot_id: 9,
+      option: "No data",
+      luck: 0,
+    },
   ],
   shotType: [
     {
@@ -81,6 +86,11 @@ const optionData = {
       shot_id: 8,
       option: "Opposite Hand",
       luck: 1,
+    },
+    {
+      shot_id: 9,
+      option: "No data",
+      luck: 0,
     },
   ],
 };

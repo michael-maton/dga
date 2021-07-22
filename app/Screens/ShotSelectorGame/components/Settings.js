@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   Text,
@@ -14,20 +14,33 @@ import optionData2 from "../../../assets/optionData2";
 import { connect } from "react-redux";
 import { editList } from "../../../Store/actions/shots";
 
-class Settings extends Component {
-  constructor(props) {
-    super(props);
-  }
-  state = { defaultCheck: true };
+function Settings({ shots, editShotList, navigation }) {
+  const [shotForm, setShotForm] = useState(shots);
 
-  render() {
-    const { navigation } = this.props;
+  const handleLuckToggle = (type, idx, currentLuck) => {
+    let newLuck = 1;
+    if (currentLuck != 0) {
+      newLuck = 0;
+    }
+    const updatedShot = {
+      ...shotForm[type][idx],
+      luck: newLuck,
+    };
+    setShotForm({
+      ...shotForm,
+      [shotForm[type]]: [
+        ...shotForm[type],
+        (shotForm[type][idx] = updatedShot),
+      ],
+    });
+  };
 
-    return (
-      <SafeAreaView style={styles.settingsWrapper}>
-        <ScrollView contentContainerStyle={styles.checkboxes}>
-          <Text style={styles.titles}>Disc Type:</Text>
-          {optionData.discType.map((item, idx) => {
+  return (
+    <SafeAreaView style={styles.settingsWrapper}>
+      <ScrollView contentContainerStyle={styles.checkboxes}>
+        <Text style={styles.titles}>Disc Type:</Text>
+        {shotForm.discType.map((item, idx) => {
+          if (item.shot_id != 9) {
             return (
               <BouncyCheckbox
                 key={idx}
@@ -37,14 +50,19 @@ class Settings extends Component {
                 unfillColor="#FFFFFF"
                 text={item.option}
                 textStyle={{ color: "white", textDecorationLine: "none" }}
-                isChecked={this.state.defaultCheck}
+                isChecked={item.luck > 0 ? true : false}
                 iconStyle={{ borderColor: "white" }}
-                onPress={() => {}}
+                value={1}
+                onPress={() => {
+                  handleLuckToggle("discType", idx, item.luck);
+                }}
               />
             );
-          })}
-          <Text style={styles.titles}>Shot Type:</Text>
-          {optionData.shotType.map((item, idx) => {
+          }
+        })}
+        <Text style={styles.titles}>Shot Type:</Text>
+        {shotForm.shotType.map((item, idx) => {
+          if (item.shot_id != 9) {
             return (
               <BouncyCheckbox
                 key={idx}
@@ -54,28 +72,30 @@ class Settings extends Component {
                 unfillColor="#FFFFFF"
                 text={item.option}
                 textStyle={{ color: "white", textDecorationLine: "none" }}
-                isChecked={this.state.defaultCheck}
+                isChecked={item.luck > 0 ? true : false}
                 iconStyle={{ borderColor: "white" }}
-                onPress={() => {}}
+                onPress={() => {
+                  handleLuckToggle("shotType", idx, item.luck);
+                }}
               />
             );
-          })}
-          <TouchableOpacity
-            title="Back"
-            style={styles.saveButton}
-            onPress={() => {
-              this.props.editShotList(optionData2);
-              navigation.goBack();
-              navigation.pop();
-              navigation.push("ShotSelectorGame");
-            }}
-          >
-            <Text style={styles.saveButtonText}> Save </Text>
-          </TouchableOpacity>
-        </ScrollView>
-      </SafeAreaView>
-    );
-  }
+          }
+        })}
+        <TouchableOpacity
+          title="Back"
+          style={styles.saveButton}
+          onPress={() => {
+            editShotList(shotForm);
+            navigation.goBack();
+            navigation.pop();
+            navigation.push("ShotSelectorGame");
+          }}
+        >
+          <Text style={styles.saveButtonText}> Save </Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
 const mapStateToProps = (state) => {
