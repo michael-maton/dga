@@ -40,42 +40,46 @@ function Settings({ shots, editShotList, navigation }) {
       <ScrollView contentContainerStyle={styles.checkboxes}>
         <Text style={styles.titles}>Disc Type:</Text>
         {shotForm.discType.map((item, idx) => {
-          return (
-            <BouncyCheckbox
-              key={idx}
-              size={30}
-              style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
-              fillColor="#76b6ef"
-              unfillColor="#FFFFFF"
-              text={item.option}
-              textStyle={{ color: "white", textDecorationLine: "none" }}
-              isChecked={item.luck > 0 ? true : false}
-              iconStyle={{ borderColor: "white" }}
-              value={1}
-              onPress={() => {
-                handleLuckToggle("discType", idx, item.luck);
-              }}
-            />
-          );
+          if (item.shot_id != 9) {
+            return (
+              <BouncyCheckbox
+                key={idx}
+                size={30}
+                style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
+                fillColor="#76b6ef"
+                unfillColor="#FFFFFF"
+                text={item.option}
+                textStyle={{ color: "white", textDecorationLine: "none" }}
+                isChecked={item.luck > 0 ? true : false}
+                iconStyle={{ borderColor: "white" }}
+                value={1}
+                onPress={() => {
+                  handleLuckToggle("discType", idx, item.luck);
+                }}
+              />
+            );
+          }
         })}
         <Text style={styles.titles}>Shot Type:</Text>
         {shotForm.shotType.map((item, idx) => {
-          return (
-            <BouncyCheckbox
-              key={idx}
-              size={30}
-              style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
-              fillColor="#76b6ef"
-              unfillColor="#FFFFFF"
-              text={item.option}
-              textStyle={{ color: "white", textDecorationLine: "none" }}
-              isChecked={item.luck > 0 ? true : false}
-              iconStyle={{ borderColor: "white" }}
-              onPress={() => {
-                handleLuckToggle("shotType", idx, item.luck);
-              }}
-            />
-          );
+          if (item.shot_id != 9) {
+            return (
+              <BouncyCheckbox
+                key={idx}
+                size={30}
+                style={{ paddingBottom: 10, marginLeft: 40, width: 200 }}
+                fillColor="#76b6ef"
+                unfillColor="#FFFFFF"
+                text={item.option}
+                textStyle={{ color: "white", textDecorationLine: "none" }}
+                isChecked={item.luck > 0 ? true : false}
+                iconStyle={{ borderColor: "white" }}
+                onPress={() => {
+                  handleLuckToggle("shotType", idx, item.luck);
+                }}
+              />
+            );
+          }
         })}
         <TouchableOpacity
           title="Back"
