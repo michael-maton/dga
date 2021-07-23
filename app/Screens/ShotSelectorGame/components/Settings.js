@@ -40,6 +40,14 @@ function Settings({ shots, editShotList, navigation }) {
       <ScrollView contentContainerStyle={styles.settingsContainer}>
         <Text style={styles.titles}>Disc Type:</Text>
         {shotForm.discType.map((item, idx) => {
+          let currentLuck = "";
+          if (item.luck == 1) {
+            currentLuck = "low"
+          } else if (item.luck == 2) {
+            currentLuck = "med"
+          } else if (item.luck == 5) {
+            currentLuck = "high"
+          }
           if (item.shot_id != 9) {
             return (
               <View key={idx} style={styles.individualWrapper}>
@@ -58,14 +66,14 @@ function Settings({ shots, editShotList, navigation }) {
                   }}
                 />
                 <View style={styles.luckWrapper}>
-                  <TouchableOpacity>
-                    <Text style={styles.luckText}>Low</Text>
+                  <TouchableOpacity activeOpacity={1}>
+                    <Text style={currentLuck == "low" ? styles.luckText : styles.disabledLuckText}>Low</Text>
                   </TouchableOpacity>
                   <TouchableOpacity>
-                    <Text style={styles.luckText}>Med</Text>
+                    <Text style={currentLuck == "med" ? styles.luckText : styles.disabledLuckText}>Med</Text>
                   </TouchableOpacity>
                   <TouchableOpacity>
-                    <Text style={styles.luckText}>High</Text>
+                    <Text style={currentLuck == "high" ? styles.luckText : styles.disabledLuckText}>High</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -74,6 +82,14 @@ function Settings({ shots, editShotList, navigation }) {
         })}
         <Text style={[styles.titles, { paddingTop: 10 }]}>Shot Type:</Text>
         {shotForm.shotType.map((item, idx) => {
+          let currentLuck = "";
+          if (item.luck == 1) {
+            currentLuck = "low"
+          } else if (item.luck == 2) {
+            currentLuck = "med"
+          } else if (item.luck == 5) {
+            currentLuck = "high"
+          }
           if (item.shot_id != 9) {
             return (
               <View key={idx} style={styles.individualWrapper}>
@@ -91,14 +107,14 @@ function Settings({ shots, editShotList, navigation }) {
                   }}
                 />
                 <View style={styles.luckWrapper}>
-                  <TouchableOpacity>
-                    <Text style={styles.luckText}>Low</Text>
+                  <TouchableOpacity activeOpacity={1}>
+                    <Text style={currentLuck == "low" ? styles.luckText : styles.disabledLuckText}>Low</Text>
                   </TouchableOpacity>
                   <TouchableOpacity>
-                    <Text style={styles.luckText}>Med</Text>
+                    <Text style={currentLuck == "med" ? styles.luckText : styles.disabledLuckText}>Med</Text>
                   </TouchableOpacity>
                   <TouchableOpacity>
-                    <Text style={styles.luckText}>High</Text>
+                    <Text style={currentLuck == "high" ? styles.luckText : styles.disabledLuckText}>High</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -176,6 +192,17 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 6,
     textAlign: "center",
+  },
+  disabledLuckText:{
+    color: "gray",
+    fontSize: 10,
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "gray",
+    paddingVertical: 5,
+    paddingHorizontal: 6,
+    textAlign: "center",
+    opacity: 0.5,
   },
   saveButton: {
     width: Constants.MAX_WIDTH,
