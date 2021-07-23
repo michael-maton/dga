@@ -176,7 +176,7 @@ function Settings({ shots, editShotList, navigation }) {
                   isChecked={item.disabled ? false : true}
                   iconStyle={{ borderColor: "white" }}
                   onPress={() => {
-                    handleLuckToggle("discType", idx, item.disabled);
+                    handleLuckToggle("shotType", idx, item.disabled);
                   }}
                 />
                 <View style={styles.luckWrapper}>
