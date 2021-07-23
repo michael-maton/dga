@@ -3,7 +3,7 @@ export default function PatternCreator(data) {
   let pattern = "";
 
   data.forEach((e) => {
-    patternArr.push([e.shot_id, e.luck]);
+    patternArr.push([e.shot_id, e.diabled ? 0 : e.luck]);
   });
   
   while (patternArr.length > 0) {
