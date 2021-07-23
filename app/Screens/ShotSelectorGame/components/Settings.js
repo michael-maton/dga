@@ -49,6 +49,7 @@ function Settings({ shots, editShotList, navigation }) {
         <Text style={styles.titles}>Disc Type:</Text>
         {shotForm.discType.map((item, idx) => {
           let currentLuck = "";
+          let currentDisabed = item.luck == 0 ? true : false;
           if (item.luck == 1) {
             currentLuck = "low";
           } else if (item.luck == 2) {
@@ -75,8 +76,11 @@ function Settings({ shots, editShotList, navigation }) {
                 />
                 <View style={styles.luckWrapper}>
                   <TouchableOpacity
+                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
                     onPress={() => {
-                      handleLuckToggle("discType", idx, item.luck, "low");
+                      if (item.luck != 0) {
+                        handleLuckToggle("discType", idx, item.luck, "low");
+                      }
                     }}
                   >
                     <Text
@@ -90,8 +94,11 @@ function Settings({ shots, editShotList, navigation }) {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
+                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
                     onPress={() => {
-                      handleLuckToggle("discType", idx, item.luck, "med");
+                      if (item.luck != 0) {
+                        handleLuckToggle("discType", idx, item.luck, "med");
+                      }
                     }}
                   >
                     <Text
@@ -105,8 +112,11 @@ function Settings({ shots, editShotList, navigation }) {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
+                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
                     onPress={() => {
-                      handleLuckToggle("discType", idx, item.luck, "high");
+                      if (item.luck != 0) {
+                        handleLuckToggle("discType", idx, item.luck, "high");
+                      }
                     }}
                   >
                     <Text
@@ -152,8 +162,11 @@ function Settings({ shots, editShotList, navigation }) {
                 />
                 <View style={styles.luckWrapper}>
                   <TouchableOpacity
+                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
                     onPress={() => {
-                      handleLuckToggle("shotType", idx, item.luck, "low");
+                      if (item.luck != 0) {
+                        handleLuckToggle("shotType", idx, item.luck, "low");
+                      }
                     }}
                   >
                     <Text
@@ -167,8 +180,11 @@ function Settings({ shots, editShotList, navigation }) {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
+                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
                     onPress={() => {
-                      handleLuckToggle("shotType", idx, item.luck, "med");
+                      if (item.luck != 0) {
+                        handleLuckToggle("shotType", idx, item.luck, "med");
+                      }
                     }}
                   >
                     <Text
@@ -182,8 +198,11 @@ function Settings({ shots, editShotList, navigation }) {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
+                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
                     onPress={() => {
-                      handleLuckToggle("shotType", idx, item.luck, "high");
+                      if (item.luck != 0) {
+                        handleLuckToggle("shotType", idx, item.luck, "high");
+                      }
                     }}
                   >
                     <Text
