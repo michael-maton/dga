@@ -190,7 +190,7 @@ function Settings({ shots, editShotList, navigation }) {
                   >
                     <Text
                       style={
-                        item.disabled == "low"
+                        currentLuck == "low"
                           ? styles.luckText
                           : styles.disabledLuckText
                       }
