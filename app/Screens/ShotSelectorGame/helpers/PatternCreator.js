@@ -3,7 +3,7 @@ export default function PatternCreator(data) {
   let pattern = "";
 
   data.forEach((e) => {
-    patternArr.push([e.shot_id, e.luck]);
+    patternArr.push([e.shot_id, e.disabled ? 0 : e.luck]);
   });
   
   while (patternArr.length > 0) {
@@ -22,7 +22,6 @@ export default function PatternCreator(data) {
   while (pattern.length < 33) {
     pattern = pattern.repeat(2);
   }
-  
   
   return pattern;
 }

@@ -9,15 +9,27 @@ import {
 } from "react-native";
 import Constants from "../../../../Constants";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import optionData from "../../../assets/optionData";
-import optionData2 from "../../../assets/optionData2";
 import { connect } from "react-redux";
 import { editList } from "../../../Store/actions/shots";
 
 function Settings({ shots, editShotList, navigation }) {
   const [shotForm, setShotForm] = useState(shots);
 
-  const handleLuckToggle = (type, idx, currentLuck, tier) => {
+  const handleLuckToggle = (type, idx, status) => {
+    const updatedShot = {
+      ...shotForm[type][idx],
+      disabled: !status,
+    };
+    setShotForm({
+      ...shotForm,
+      [shotForm[type]]: [
+        ...shotForm[type],
+        (shotForm[type][idx] = updatedShot),
+      ],
+    });
+  };
+  
+  const handleChangeLuck = (type, idx, currentLuck, tier) => {
     let newLuck = 1;
     if (tier == "onOff") {
       if (currentLuck != 0) {
@@ -49,13 +61,16 @@ function Settings({ shots, editShotList, navigation }) {
         <Text style={styles.titles}>Disc Type:</Text>
         {shotForm.discType.map((item, idx) => {
           let currentLuck = "";
-          let currentDisabed = item.luck == 0 ? true : false;
-          if (item.luck == 1) {
-            currentLuck = "low";
-          } else if (item.luck == 2) {
-            currentLuck = "med";
-          } else if (item.luck == 5) {
-            currentLuck = "high";
+          if (item.disabled == true) {
+            currentLuck = "disabled";
+          } else {
+            if (item.luck == 1) {
+              currentLuck = "low";
+            } else if (item.luck == 2) {
+              currentLuck = "med";
+            } else if (item.luck == 5) {
+              currentLuck = "high";
+            }
           }
           if (item.shot_id != 9) {
             return (
@@ -67,19 +82,19 @@ function Settings({ shots, editShotList, navigation }) {
                   unfillColor="#FFFFFF"
                   text={item.option}
                   textStyle={{ color: "white", textDecorationLine: "none" }}
-                  isChecked={item.luck > 0 ? true : false}
+                  isChecked={item.disabled ? false : true}
                   iconStyle={{ borderColor: "white" }}
                   value={1}
                   onPress={() => {
-                    handleLuckToggle("discType", idx, item.luck, "onOff");
+                    handleLuckToggle("discType", idx, item.disabled);
                   }}
                 />
                 <View style={styles.luckWrapper}>
                   <TouchableOpacity
-                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
+                    activeOpacity={(item.disabled ? 1 : 0.2)}
                     onPress={() => {
-                      if (item.luck != 0) {
-                        handleLuckToggle("discType", idx, item.luck, "low");
+                      if (item.disabled == false) {
+                        handleChangeLuck("discType", idx, item.luck, "low");
                       }
                     }}
                   >
@@ -94,10 +109,10 @@ function Settings({ shots, editShotList, navigation }) {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
+                    activeOpacity={(item.disabled ? 1 : 0.2)}
                     onPress={() => {
-                      if (item.luck != 0) {
-                        handleLuckToggle("discType", idx, item.luck, "med");
+                      if (item.disabled == false) {
+                        handleChangeLuck("discType", idx, item.luck, "med");
                       }
                     }}
                   >
@@ -112,10 +127,10 @@ function Settings({ shots, editShotList, navigation }) {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
+                    activeOpacity={(item.disabled ? 1 : 0.2)}
                     onPress={() => {
-                      if (item.luck != 0) {
-                        handleLuckToggle("discType", idx, item.luck, "high");
+                      if (item.disabled == false) {
+                        handleChangeLuck("discType", idx, item.luck, "high");
                       }
                     }}
                   >
@@ -137,12 +152,16 @@ function Settings({ shots, editShotList, navigation }) {
         <Text style={[styles.titles, { paddingTop: 10 }]}>Shot Type:</Text>
         {shotForm.shotType.map((item, idx) => {
           let currentLuck = "";
-          if (item.luck == 1) {
-            currentLuck = "low";
-          } else if (item.luck == 2) {
-            currentLuck = "med";
-          } else if (item.luck == 5) {
-            currentLuck = "high";
+          if (item.disabled == true) {
+            currentLuck = "disabled";
+          } else {
+            if (item.luck == 1) {
+              currentLuck = "low";
+            } else if (item.luck == 2) {
+              currentLuck = "med";
+            } else if (item.luck == 5) {
+              currentLuck = "high";
+            }
           }
           if (item.shot_id != 9) {
             return (
@@ -154,18 +173,18 @@ function Settings({ shots, editShotList, navigation }) {
                   unfillColor="#FFFFFF"
                   text={item.option}
                   textStyle={{ color: "white", textDecorationLine: "none" }}
-                  isChecked={item.luck > 0 ? true : false}
+                  isChecked={item.disabled ? false : true}
                   iconStyle={{ borderColor: "white" }}
                   onPress={() => {
-                    handleLuckToggle("shotType", idx, item.luck, "onOff");
+                    handleLuckToggle("shotType", idx, item.disabled);
                   }}
                 />
                 <View style={styles.luckWrapper}>
                   <TouchableOpacity
-                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
+                    activeOpacity={(item.disabled ? 1 : 0.2)}
                     onPress={() => {
-                      if (item.luck != 0) {
-                        handleLuckToggle("shotType", idx, item.luck, "low");
+                      if (item.disabled == false) {
+                        handleChangeLuck("shotType", idx, item.luck, "low");
                       }
                     }}
                   >
@@ -180,10 +199,10 @@ function Settings({ shots, editShotList, navigation }) {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
+                    activeOpacity={(item.disabled ? 1 : 0.2)}
                     onPress={() => {
-                      if (item.luck != 0) {
-                        handleLuckToggle("shotType", idx, item.luck, "med");
+                      if (item.disabled == false) {
+                        handleChangeLuck("shotType", idx, item.luck, "med");
                       }
                     }}
                   >
@@ -198,10 +217,10 @@ function Settings({ shots, editShotList, navigation }) {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    activeOpacity={(item.luck == 0 ? 1 : 0.2)}
+                    activeOpacity={(item.disabled ? 1 : 0.2)}
                     onPress={() => {
-                      if (item.luck != 0) {
-                        handleLuckToggle("shotType", idx, item.luck, "high");
+                      if (item.disabled == false) {
+                        handleChangeLuck("shotType", idx, item.luck, "high");
                       }
                     }}
                   >
