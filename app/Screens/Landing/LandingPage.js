@@ -20,7 +20,7 @@ export default function Landing({ navigation }) {
         <TouchableOpacity
           style={styles.authButtons}
           title="Sign In"
-          onPress={() => alert("todo")}
+          onPress={() => alert('Todo. Click \'Skip\' for now.')}
         >
           <Text style={[styles.authButtonText, { color: "white" }]}>
             Sign In
