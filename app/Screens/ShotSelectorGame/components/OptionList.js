@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { StyleSheet, View, Animated } from "react-native";
-import Constants from "../../../../Constants";
-import Option from "./Option";
+import React, { Component } from 'react';
+import { StyleSheet, View, Animated } from 'react-native';
+import Constants from '../../../../Constants';
+import Option from './Option';
 
 export default class OptionList extends Component {
   constructor(props) {
     super(props);
-    this.scrollPattern = this.props.pattern.repeat(Constants.REPEAT).split(""); // converts pattern to array
+    this.scrollPattern = this.props.pattern.repeat(Constants.REPEAT).split(''); // converts pattern to array
     this.fullReel = [];
     this.position = this.props.pattern.length * Constants.REPEAT - 1;
     this.currentScrollPos =
       (this.props.pattern.length - 1) * this.props.height * -1;
     this.state = {
-      scrollPos: new Animated.Value(this.currentScrollPos),
+      scrollPos: new Animated.Value(this.currentScrollPos)
     };
   }
 
@@ -25,7 +25,7 @@ export default class OptionList extends Component {
     Animated.timing(this.state.scrollPos, {
       toValue: this.currentScrollPos,
       duration: 1000,
-      useNativeDriver: true,
+      useNativeDriver: true
     }).start(() => {
       this.position =
         (Constants.REPEAT - (Constants.REPEAT - 1)) * this.props.pattern.length +
@@ -37,7 +37,7 @@ export default class OptionList extends Component {
 
   // builds recent list
   buildRecent = async (recentPosition) => {
-    let recentSpin = await this.fullReel.filter((obj) => obj.id == recentPosition)[0]
+    let recentSpin = await this.fullReel.filter(obj => obj.id === recentPosition)[0]
       .option;
     this.props.updateRecentSpins(recentSpin);
   };
@@ -58,12 +58,12 @@ export default class OptionList extends Component {
   render() {
     this.createReel();
     return (
-      <View style={styles.optionList}>
+      <View style = {styles.optionList}>
         <Animated.View
-          style={{ transform: [{ translateY: this.state.scrollPos }] }}
+          style = {{ transform: [{ translateY: this.state.scrollPos }] }}
         >
           {this.fullReel.map((el, idx) => {
-            return <Option optionObject={el} key={idx} />;
+            return <Option optionObject={el} key = {idx} />;
           })}
         </Animated.View>
       </View>
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   optionList: {
     width: Constants.MAX_WIDTH / 2,
     height: Constants.MAX_HEIGHT / 7,
-    alignItems: "center",
-    overflow: "hidden",
-  },
+    alignItems: 'center',
+    overflow: 'hidden'
+  }
 });

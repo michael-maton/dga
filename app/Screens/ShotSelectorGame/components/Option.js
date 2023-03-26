@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import Constants from "../../../../Constants";
+import React, { Component } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import Constants from '../../../../Constants';
 
 export default class Option extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: "white",
-      // backgroundColor: "#D3C7D7",
+      color: 'white',
+      // backgroundColor: '#D3C7D7'
     };
   }
 
@@ -15,18 +15,18 @@ export default class Option extends Component {
   //   return {
   //     width: Constants.MAX_WIDTH / 2,
   //     height: Constants.MAX_HEIGHT / 7,
-  //     justifyContent: "center",
-  //     alignItems: "center",
+  //     justifyContent: 'center',
+  //     alignItems: 'center',
   //   };
   // };
 
   render() {
     return (
-      <View style={styles.optionContainer}>
+      <View style = {styles.optionContainer}>
         <Text
-          style={{
+          style = {{
             color: this.state.color,
-            fontSize: 20,
+            fontSize: 20
           }}
         >
           {this.props.optionObject.option}
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   optionContainer: {
     width: Constants.MAX_WIDTH / 2,
     height: Constants.MAX_HEIGHT / 7,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 });

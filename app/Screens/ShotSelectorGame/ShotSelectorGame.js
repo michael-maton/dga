@@ -37,22 +37,22 @@ class ShotSelectorGame extends Component {
     const { navigation } = this.props;
 
     return (
-      <SafeAreaView style={styles.slotGameContainer}>
-        <View style={styles.recentListContainer}>
+      <SafeAreaView style = {styles.slotGameContainer}>
+        <View style = {styles.recentListContainer}>
           <TouchableOpacity
-            onPress={() => navigation.push('Settings')}
+            onPress = {() => navigation.push('Settings')}
             style={styles.settingsContainer}
           >
             <FontAwesomeIcon
-              style={styles.settingsButton}
-              icon={faCog}
-              size={20}
+              style = {styles.settingsButton}
+              icon = {faCog}
+              size = {20}
             />
           </TouchableOpacity>
           <TouchableOpacity
-            title='Recent Shots'
-            style={styles.recentList}
-            onPress={() =>
+            title = 'Recent Shots'
+            style = {styles.recentList}
+            onPress = {() =>
               navigation.push('RecentList', { recentSpins: this.recentSpins })
             }
           >
@@ -73,19 +73,19 @@ class ShotSelectorGame extends Component {
 
           {/* ----- SHOT TYPE SPINNER ----- */}
           <Spinner
-            recentSpins={this.recentSpins}
-            updateRecentSpins={this.updateRecentSpins}
-            spinnerData={this.props.shotList.shotType}
-            pattern={this.props.shotPattern}
-            ref={(ref) => {
+            recentSpins = {this.recentSpins}
+            updateRecentSpins = {this.updateRecentSpins}
+            spinnerData = {this.props.shotList.shotType}
+            pattern = {this.props.shotPattern}
+            ref = {(ref) => {
               this.spinnerSet[1] = ref;
             }}
           />
         </View>
-        <View style={styles.spinButtonContainer}>
+        <View style = {styles.spinButtonContainer}>
           <TouchableOpacity
-            style={styles.spinButton}
-            onPress={() => {
+            style = {styles.spinButton}
+            onPress = {() => {
               this.spinnerSet[0].spin();
               this.spinnerSet[1].spin();
             }}

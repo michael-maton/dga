@@ -15,7 +15,7 @@ export default class RecentList extends Component {
     if (this.recentSpins.length != 0) {
       this.noRecentShots = false;
       this.recentSpins.slice(0,20).forEach((spin, idx) => (
-        idx % 2 != 0 ? this.discTypes = [...this.discTypes, spin] : this.shotTypes = [...this.shotTypes, spin]
+        idx % 2 !== 0 ? this.discTypes = [...this.discTypes, spin] : this.shotTypes = [...this.shotTypes, spin]
       ));
     }
   }
@@ -23,19 +23,19 @@ export default class RecentList extends Component {
   render() {
     this.generateLists();
     return (
-      <SafeAreaView style={styles.listWrapper}>
-        {this.noRecentShots == true ?
-          <Text style={styles.noRecents}>No recent shots</Text> 
+      <SafeAreaView style = {styles.listWrapper}>
+        {this.noRecentShots === true ?
+          <Text style = {styles.noRecents}>No recent shots</Text>
           : 
-          <View style={styles.listContainer}>  
-            <View style={styles.discType}>
+          <View style = {styles.listContainer}>
+            <View style = {styles.discType}>
               {this.discTypes.map((spin, idx) => (
-                <Text style={idx == 0 ? styles.shotTextBig : styles.shotText} key={idx}>{spin}</Text>
+                <Text style = { idx === 0 ? styles.shotTextBig : styles.shotText } key = {idx}>{spin}</Text>
               ))}
             </View>          
             <View style={styles.shotType}>
               {this.shotTypes.map((spin, idx) => (
-                <Text style={idx == 0 ? styles.shotTextBig : styles.shotText} key={idx}>{spin}</Text>
+                <Text style = { idx === 0 ? styles.shotTextBig : styles.shotText } key = {idx}>{spin}</Text>
                 ))}
             </View> 
           </View>

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 export default function CreateAccount ({ navigation }) {
   return (
     <SafeAreaView style={styles.appContainer}>
-        <Button title='Create Account' onPress={() => alert('Todo. Return to main screen and click \'Skip\' for now.')} />
+        <Button title = 'Create Account' onPress = {() => alert('Todo. Return to main screen and click \'Skip\' for now.')} />
     </SafeAreaView>
   )
 }
