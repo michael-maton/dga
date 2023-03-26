@@ -1,14 +1,13 @@
-import React from "react";
+import React from 'react';
 import {
   SafeAreaView,
-  View,
   Text,
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  StatusBar,
-} from "react-native";
-import Constants from "../../../Constants";
+  StatusBar
+} from 'react-native';
+import Constants from '../../../Constants';
 
 export default function Home({ navigation }) {
 
@@ -17,8 +16,8 @@ export default function Home({ navigation }) {
       <ScrollView contentContainerStyle={styles.cardContainer}>
         <TouchableOpacity
           style={styles.card}
-          title="ShotSelectorGame"
-          onPress={() => navigation.push("ShotSelectorGame")}
+          title='ShotSelectorGame'
+          onPress={() => navigation.push('ShotSelectorGame')}
         >
           <Text style={styles.cardTitle}>Choose your shot</Text>
         </TouchableOpacity>
@@ -48,32 +47,31 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   homeContainer: {
     width: Constants.MAX_WIDTH,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#76b6ef",
-    borderBottomColor: "black",
-    // paddingTop: StatusBar.currentHeight,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#76b6ef',
+    borderBottomColor: 'black',
     paddingTop: StatusBar.currentHeight - 20,
-    position: "relative",
+    position: 'relative'
   },
   cardContainer: {
     width: Constants.MAX_WIDTH,
-    alignItems: "center",
-    shadowOffset: {width:10,height:10}
+    alignItems: 'center',
+    shadowOffset: { width:10, height:10 }
   },
   card: {
     borderWidth: 1,
-    borderColor: "white",
+    borderColor: 'white',
     width: Constants.MAX_WIDTH - 20,
     height: Constants.MAX_HEIGHT / 4,
     borderRadius: 5,
     margin: 10,
-    justifyContent: "flex-end",
-    shadowColor: "black",
+    justifyContent: 'flex-end',
+    shadowColor: 'black'
   },
   cardTitle: {
-    color: "white",
+    color: 'white',
     fontSize: 20,
-    padding: 5,
-  },
+    padding: 5
+  }
 });

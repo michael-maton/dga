@@ -24,7 +24,7 @@ class ShotSelectorGame extends Component {
     this.recentSpins = [];
     this.state = {
       animatedBG: new Animated.Value(0),
-      runAnimation: true,
+      runAnimation: true
     };
     // this.updateRecentSpins = this.updateRecentSpins.bind(this);
   }
@@ -40,7 +40,7 @@ class ShotSelectorGame extends Component {
       <SafeAreaView style={styles.slotGameContainer}>
         <View style={styles.recentListContainer}>
           <TouchableOpacity
-            onPress={() => navigation.push("Settings")}
+            onPress={() => navigation.push('Settings')}
             style={styles.settingsContainer}
           >
             <FontAwesomeIcon
@@ -50,10 +50,10 @@ class ShotSelectorGame extends Component {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            title="Recent Shots"
+            title='Recent Shots'
             style={styles.recentList}
             onPress={() =>
-              navigation.push("RecentList", { recentSpins: this.recentSpins })
+              navigation.push('RecentList', { recentSpins: this.recentSpins })
             }
           >
             <Text style={styles.buttonText}> Recent Spins </Text>
@@ -103,13 +103,13 @@ const mapStateToProps = (state) => {
     shotList: state.shots.shotList,
     discPattern: state.shots.discPattern,
     shotPattern: state.shots.shotPattern,
-    pattern: state.shots.pattern,
+    pattern: state.shots.pattern
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    editShotList: (newList) => dispatch(editList(newList)),
+    editShotList: (newList) => dispatch(editList(newList))
   };
 };
 
@@ -120,63 +120,63 @@ const styles = StyleSheet.create({
     height: Constants.MAX_HEIGHT,
     width: Constants.MAX_WIDTH,
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#76b6ef",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#76b6ef'
   },
   recentListContainer: {
     flex: 0.5,
     width: Constants.MAX_WIDTH,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     paddingRight: 35,
-    paddingLeft: 35,
+    paddingLeft: 35
   },
   settingsContainer: {
-    justifyContent: "center",
-    alignItems: "flex-start",
+    justifyContent: 'center',
+    alignItems: 'flex-start'
   },
   settingsButton: {
-    color: "white",
+    color: 'white'
   },
   recentList: {
-    justifyContent: "center",
-    alignItems: "flex-end",
+    justifyContent: 'center',
+    alignItems: 'flex-end'
   },
   spinnerContainer: {
     width: Constants.MAX_WIDTH,
     height: Constants.MAX_HEIGHT / 2,
     flex: 3,
-    alignItems: "center",
-    justifyContent: "space-evenly",
+    alignItems: 'center',
+    justifyContent: 'space-evenly'
   },
   spinButtonContainer: {
     flex: 1.5,
-    justifyContent: "flex-start",
+    justifyContent: 'flex-start'
   },
   spinButton: {
     width: 200,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 10,
     paddingVertical: 15,
     paddingHorizontal: 12,
     margin: 5,
-    borderColor: "white",
+    borderColor: 'white',
     borderWidth: 1,
-    color: "white",
+    color: 'white'
   },
   buttonText: {
-    color: "white",
+    color: 'white'
   },
   buttonTextDisabled: {
-    color: "#76b6ef",
+    color: '#76b6ef'
   },
   waveContainer: {
-    position: "absolute",
+    position: 'absolute',
     width: 3000,
     height: Constants.MAX_HEIGHT / 2,
     flex: 1,
-    justifyContent: "center",
-  },
+    justifyContent: 'center'
+  }
 });

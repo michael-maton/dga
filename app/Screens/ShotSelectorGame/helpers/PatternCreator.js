@@ -1,6 +1,6 @@
 export default function PatternCreator(data) {
   let patternArr = [];
-  let pattern = "";
+  let pattern = '';
 
   data.forEach((e) => {
     patternArr.push([e.shot_id, e.disabled ? 0 : e.luck]);
@@ -12,11 +12,10 @@ export default function PatternCreator(data) {
       pattern += patternArr[i][0].toString();
       patternArr[i][1] -= 1;
     }
-
   }
 
   if (pattern.length == 0) {
-    pattern = "9999999999999999999999999999999999999999";
+    pattern = '9999999999999999999999999999999999999999';
   }
   
   while (pattern.length < 33) {
