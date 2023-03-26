@@ -1,0 +1,8 @@
+// will be inheriting tsconfig.json file. additional configs in tsconfig.json will override these settings
+{
+  "compilerOptions": {
+    // ...
+    "jsx": "react"
+  },
+  "extends": "expo/tsconfig.base"
+}

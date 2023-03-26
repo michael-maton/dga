@@ -1,4 +1,8 @@
+//  inheriting the settings from the tsconfig.base.json file and then overriding or adding to them as needed
 {
-  "compilerOptions": {},
-  "extends": "expo/tsconfig.base"
+  "compilerOptions": {
+    // ...
+    "jsx": "react"
+  },
+  "extends": "./tsconfig.base.json"
 }
