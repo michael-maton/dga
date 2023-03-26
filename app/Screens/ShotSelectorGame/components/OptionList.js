@@ -37,8 +37,7 @@ export default class OptionList extends Component {
 
   // builds recent list
   buildRecent = async (recentPosition) => {
-    let recentSpin = await this.fullReel.filter(obj => obj.id === recentPosition)[0]
-      .option;
+    let recentSpin = await this.fullReel.filter(obj => obj.id === recentPosition)[0]?.option;
     this.props.updateRecentSpins(recentSpin);
   };
 
@@ -63,7 +62,7 @@ export default class OptionList extends Component {
           style = {{ transform: [{ translateY: this.state.scrollPos }] }}
         >
           {this.fullReel.map((el, idx) => {
-            return <Option optionObject={el} key = {idx} />;
+            return <Option optionObject = {el} key = {idx} />;
           })}
         </Animated.View>
       </View>

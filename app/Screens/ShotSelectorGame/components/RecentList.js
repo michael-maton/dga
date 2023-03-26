@@ -12,7 +12,7 @@ export default class RecentList extends Component {
   }
 
   generateLists = () => {
-    if (this.recentSpins.length != 0) {
+    if (this.recentSpins.length !== 0) {
       this.noRecentShots = false;
       this.recentSpins.slice(0,20).forEach((spin, idx) => (
         idx % 2 !== 0 ? this.discTypes = [...this.discTypes, spin] : this.shotTypes = [...this.shotTypes, spin]
